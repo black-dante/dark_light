@@ -52,7 +52,7 @@ int main(int argc, char* argv[])
 		qsort(line_buffer, n_lines, sizeof(char *), strcmp_reverse);
 		write_file(n_lines, line_buffer, "Output/out_kon.txt");
 		
-		write_file(n_lines, line_buffer, "Output/out_norm.txt");
+		write_file(n_lines, line_buffer_copy, "Output/out_norm.txt");
 		
 		clock_t end = clock();
 		double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;

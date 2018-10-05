@@ -6,6 +6,8 @@
 #include "equations_hed.h"
 #include "complex_lib.cpp"
 
+double comp_double_with_zero(double x);
+
 //{--------------------------------------------------------------------------------------------------------------------------------------
 /**
  *   @function quadratic_equation()
@@ -35,17 +37,17 @@ int quadratic_equation(double A, double B, double C, struct complex_ *x1, struct
 		assert(x2 != NULL);
 		assert(x1 != x2);
 		
-		if (abs_double(A) < EPSILON) return linear_equation(B, C, &(x1->Re));	//А = 0 => solve the linear equation
+		if (comp_double_with_zero(A)) return linear_equation(B, C, &(x1->Re));	//А = 0 => solve the linear equation
 			
-		if(abs_double(B) < EPSILON)
+		if(comp_double_with_zero(B))
 			{
-				if(abs_double(C) < EPSILON) return INFINITY_OF_VALUES;			//B = 0 и C = 0 => infinitely many solutions
+				if(comp_double_with_zero(C)) return INFINITY_OF_VALUES;			//B = 0 и C = 0 => infinitely many solutions
 					
 				else return 0; 													//B = 0 и С != 0 => no solutions
 			}
 		else
 			{
-				double square_discrim = B*B -4*A*C;
+				double square_discrim = B*B - 4*A*C;
 					
 				if(square_discrim < 0) 
 					{
@@ -56,21 +58,25 @@ int quadratic_equation(double A, double B, double C, struct complex_ *x1, struct
 						x2->Re = -B/(2*A);
 						x2->Im = -discrim/(2*A);
 						
-						return TWO_COMPLEX_VALUES;								//the square of the discriminant is less than 0 => two complex roots
+						return TWO_COMPLEX_VALUES;						//the square of the discriminant is less than 0 => two complex roots
 					}
 				else
 					{
 						double discrim = sqrt(square_discrim);
 							
-						if(abs_double(discrim) < EPSILON)						//the discriminant is 0 => one root x1
+						if(comp_double_with_zero(discrim))				//the discriminant is 0 => one root x1
 							{
 								x1->Re = -B/2*A;
 								return 1;
 							}
-						else													//discriminant greater than 0 => two roots x1 and x2
+						else											//discriminant greater than 0 => two roots x1 and x2
 							{
 								x1->Re = (-B + discrim)/(2*A);
+								x1->Im = 0;
+								
 								x2->Re = (-B - discrim)/(2*A);
+								x2->Im = 0;
+								
 								return 2;
 							}
 					}
@@ -101,13 +107,13 @@ int linear_equation(double A, double B, double *x)
 
 		assert(x != NULL);
 		
-		if(abs_double(A) < EPSILON)
+		if(comp_double_with_zero(A))
 			{
-				if(abs_double(B) < EPSILON) return INFINITY_OF_VALUES;			//A = 0 and B = 0 => infinitely many solutions
+				if(comp_double_with_zero(B)) return INFINITY_OF_VALUES;			//A = 0 and B = 0 => infinitely many solutions
 					
-				else return 0;													//A = 0 and B! = 0 => no solutions
+				else return 0;													//A = 0 and B != 0 => no solutions
 			}
-		else																	//A! = 0 => one root x
+		else																	//A != 0 => one root x
 			{
 				*x = -B/A;
 				return 1;
@@ -116,8 +122,19 @@ int linear_equation(double A, double B, double *x)
 //}--------------------------------------------------------------------------------------------------------------------------------------
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
-double abs_double(double x)
+/**
+ *   @function comp_double_with_zero()
+ *
+ *
+ *   @param [out] x number to compare with zero
+ *
+ *
+ *   @return 1: if the number is zero within the margin of error\n
+ *           0: if the number is not zero
+ */
+double comp_double_with_zero(double x)
 	{
-		return (x > 0? x : -x );
+		x = x >= 0? x : -x;
+		return x < EPSILON? 1: 0;
 	}
 //}--------------------------------------------------------------------------------------------------------------------------------------

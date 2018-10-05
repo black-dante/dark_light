@@ -18,9 +18,9 @@
  */
 inline int strcmp_norms(const void *str1_t, const void *str2_t)
 	{
-		//assert(str1_t != NULL);
-		//assert(str2_t != NULL);
-		//assert(str1_t != str2_t);
+		assert(str1_t != NULL);
+		assert(str2_t != NULL);
+		assert(str1_t != str2_t);
 		
 		register char *str1 = *(char**)str1_t;
 		register char *str2 = *(char**)str2_t;
@@ -51,9 +51,9 @@ inline int strcmp_norms(const void *str1_t, const void *str2_t)
  */
 inline int strcmp_reverse(const void *str1_t, const void *str2_t)
 	{
-		//assert(str1_t != NULL);
-		//assert(str2_t != NULL);
-		//assert(str1_t != str2_t);
+		assert(str1_t != NULL);
+		assert(str2_t != NULL);
+		assert(str1_t != str2_t);
 		
 		register char *str1 = *(char**)str1_t;
 		register char *str2 = *(char**)str2_t;

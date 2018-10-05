@@ -48,8 +48,12 @@ int main(int argc, char* argv[])
 		printf("chars = %ld lines = %ld\n", n_chars, n_lines);
 		
 		FILE* out_nach = fopen("Output/out_nach.txt","w");
-		FILE* out_kon = fopen("Output/out_kon.txt","w");
+		FILE* out_kon  = fopen("Output/out_kon.txt","w");
 		FILE* out_norm = fopen("Output/out_norm.txt","w");
+		
+		assert(out_nach != NULL);
+		assert(out_kon  != NULL);
+		assert(out_norm != NULL);
 		
 		qsort(line_buffer, n_lines, sizeof(char *), strcmp_norms);
 		write_file(out_nach, n_lines, line_buffer);

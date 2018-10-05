@@ -11,6 +11,8 @@ Here the whole program begins to work
 //{--------------------------------------------------------------------------------------------------------------------------------------
 /**
  *   @function main()
+ *	enter three quadratic coefficients
+ *  the program will give you the roots of your equation
  *
  *   @return 0 - the program completed successfully
  *			 1 - The program is completed with an error. Not the correct input format

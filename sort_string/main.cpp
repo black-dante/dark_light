@@ -34,38 +34,28 @@ int main(int argc, char* argv[])
 		clock_t begin = clock();
 		
 		int file_input = open(argv[1], O_RDONLY | O_BINARY);
-		assert(file_input != -1);
+		assert(file_input >= 0);
+		int file_output = open("Output/out.txt", O_WRONLY | O_CREAT);
+		assert(file_output >= 0);
 		
 		long int n_chars = 0;
 		char* char_buffer = NULL;
 		long int n_lines = 0;
-		char** line_buffer = NULL;
-		
+		struct line** line_buffer = NULL;
+
 		read_file_and_create_char_and_line_buffers(file_input, &line_buffer, &char_buffer, &n_lines, &n_chars);
-		
-		char** line_buffer_copy = copy_line_buffer(line_buffer, n_lines);
 		
 		printf("chars = %ld lines = %ld\n", n_chars, n_lines);
 		
-		FILE* out_nach = fopen("Output/out_nach.txt","w");
-		FILE* out_kon  = fopen("Output/out_kon.txt","w");
-		FILE* out_norm = fopen("Output/out_norm.txt","w");
+		qsort(line_buffer, n_lines, sizeof(struct line*), strcmp_norms);
+		char* new_char_buffer = line_buffer_to_char_buffer(n_lines, line_buffer, n_chars);
+		write(file_output, new_char_buffer, n_chars);
 		
-		assert(out_nach != NULL);
-		assert(out_kon  != NULL);
-		assert(out_norm != NULL);
+		qsort(line_buffer, n_lines, sizeof(struct line*), strcmp_reverse);
+		new_char_buffer = line_buffer_to_char_buffer(n_lines, line_buffer, n_chars);
+		write(file_output, new_char_buffer, n_chars);
 		
-		qsort(line_buffer, n_lines, sizeof(char *), strcmp_norms);
-		write_file(out_nach, n_lines, line_buffer);
-		
-		qsort(line_buffer, n_lines, sizeof(char *), strcmp_reverse);
-		write_file(out_kon, n_lines, line_buffer);
-		
-		write_file(out_norm, n_lines, line_buffer_copy);
-		
-		fclose(out_nach);
-		fclose(out_kon);
-		fclose(out_norm);
+		write(file_output, char_buffer + 1, n_chars);
 		
 		clock_t end = clock();
 		double time_spent = (double)(end - begin) / CLOCKS_PER_SEC;

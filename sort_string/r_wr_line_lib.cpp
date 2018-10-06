@@ -27,6 +27,8 @@ struct line
  */
 long int size_of_file(int  file_dis)
 	{
+		long int first_position = lseek(file_dis, 0, SEEK_CUR);
+		
 		assert(file_dis > 0);
 		
 		long int file_size = 0;
@@ -37,7 +39,7 @@ long int size_of_file(int  file_dis)
 		assert(errno != EINVAL);
 		errno = 0;
 		
-		file_size = tell(file_dis);
+		file_size = tell(file_dis) - first_position;
 		
 		assert(errno != EBADF);
 		errno = 0;

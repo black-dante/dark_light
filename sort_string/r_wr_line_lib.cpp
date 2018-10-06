@@ -44,7 +44,7 @@ long int size_of_file(int  file_dis)
 		assert(errno != EBADF);
 		errno = 0;
 		
-		lseek(file_dis, 0, SEEK_SET);
+		lseek(file_dis, 0, first_position);
 		
 		assert(errno != EBADF);
 		assert(errno != EINVAL);

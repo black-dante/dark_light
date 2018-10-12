@@ -1,0 +1,12 @@
+OPS st_assert 1:
+WTF? memory data is't correct
+file = c:\users\даниил\desktop\технотрек\stack 2\stack.cpp
+func = int __cdecl stack_pop(struct stack *)
+line = 107
+data = Oct 12 2018
+time = 22:14:39
+
+
+
+
+

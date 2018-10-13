@@ -18,9 +18,12 @@ void stack_create(STACK** memory)
 		assert((*memory)->data != NULL);
 		
 		(*memory)->capasity = capasity_first;//кол во свободных и занятых ячеек
-		(*memory)->size = 0; //кол-во ячеек памяти вообще
+		(*memory)->size = 1; //кол-во ячеек памяти вообще + ячейка под первую канарейку
 		
-		(*memory)->sum = 0;
+		(*memory)->data[0] = canary;
+		(*memory)->data[1] = canary;
+		
+		hash_sum_create(*memory);
 		
 		st_assert(*memory);
 	}
@@ -66,7 +69,7 @@ int stack_push(data_t number, STACK* memory)
 	{
 		st_assert(memory);
 		
-		if(memory->size + 1== memory->capasity) 
+		if(memory->size + 1 == memory->capasity) 
 			if(stack_capasity_increase(memory));
 			else 
 				{
@@ -84,6 +87,8 @@ int stack_push(data_t number, STACK* memory)
 		memory->sum+= ((memory->size % 2) == 1) ? (memory->data[memory->size]) : ( - memory->data[memory->size]);
 		
 		memory->size++;
+		
+		memory->data[memory->size] = canary;
 		
 		st_assert(memory);
 		
@@ -103,7 +108,7 @@ data_t stack_pop(STACK* memory)
 	{
 		st_assert(memory);
 		
-		if(memory->size == 0) 
+		if(memory->size == 1) 
 			{
 				fprintf(error_stack, "OPS st_assert %d:\n", ++error_count);
 				fprintf(error_stack, "STACK IS EMPTY\nPOP FAILED\n"); //вывод из пустого стека
@@ -114,13 +119,15 @@ data_t stack_pop(STACK* memory)
 				return 666;
 			}
 		
+		memory->data[memory->size] = 0;
+		
 		data_t number = memory->data[--memory->size];
 		
 		memory->sum-= ((memory->size % 2) == 1) ? (memory->data[memory->size]) : ( - memory->data[memory->size]);
 		
-		memory->data[memory->size] = 0;
+		memory->data[memory->size] = canary;
 		
-		if(memory->size < (memory->capasity/4))
+		if(memory->size < (memory->capasity/4) - 1)
 			stack_capasity_decrease(memory);
 		
 		st_assert(memory);
@@ -204,7 +211,7 @@ int stack_ok(STACK* memory)
 		if(!(memory->size >= 0 && memory->capasity >= memory->size  && memory->capasity > 0 && memory->data != NULL)) 
 			return 2;
 		
-		if (!(hash_sum_ok(memory)))
+		if (!(hash_sum_ok(memory)) || memory->data[0] != canary || memory->data[memory->size] != canary)
 			return 3;
 		
 		return 0;
@@ -221,12 +228,12 @@ int stack_ok(STACK* memory)
  */		
 void stack_print_info(STACK* memory, FILE* info)
 	{
-		fprintf(info, "stack_pointer = %d \nstack_data_pointer = %d \n", memory, memory->data);
+		fprintf(info, "stack_pointer = %ld \nstack_data_pointer = %ld \n", (long int)memory, (long int)memory->data);
 		
 		fprintf(info, "stack_capasity = %d \nstack_size = %d \n", memory->capasity, memory->size);
 		fprintf(info, "data:\n");
 		
-		for(int i = 0; i < memory->size; i++)
+		for(int i = 0; i <= memory->size; i++)
 			fprintf(info, "stack_data[%d] = %d \n", i, memory->data[i]);
 		
 	}

@@ -4,6 +4,7 @@
 
 const double EPSILON = 0.00001;
 const size_t capasity_first = 100;
+const int canary = 666;
 size_t error_count = 0;
 
 FILE* error_stack = fopen("ERRORS/stack_error.txt","w");

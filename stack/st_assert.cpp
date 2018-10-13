@@ -36,8 +36,8 @@
 					{																										\
 						fprintf(error_stack, "OPS st_assert %d:\n", ++error_count);											\
 						fprintf(error_stack, "WTF? struct stack %s isn't correct\n",#stack);								\
-						fprintf(error_stack, "stack cap = %lf:\n stack size = %lf\n", (stack)->capasity, (stack)->size);	\
-						fprintf(error_stack, "stack data ponter = %ld\n", (stack)->data);									\
+						fprintf(error_stack, "stack cap = %ld:\n stack size = %ld\n", (stack)->capasity, (stack)->size);	\
+						fprintf(error_stack, "stack data ponter = %ld\n", (long int)((stack)->data));						\
 						fprintf(error_stack, "file = %s\nfunc = %s\nline = %d\n", __FILE__, __FUNCSIG__, __LINE__);			\
 						fprintf(error_stack, "data = %s\ntime = %s\n", __DATE__, __TIME__);									\
 						fprintf(error_stack, "\n\n\n\n\n");																	\
@@ -60,6 +60,8 @@
 						stack_print_info(stack, error_data);																\
 						fprintf(error_data,  "\n\n\n\n\n");																	\
 						hash_sum_create(stack);																				\
+						(stack)->data[0] = canary;																			\
+						(stack)->data[(stack)->size] = canary;																\
 					}																										\
 				break;																										\
 																															\

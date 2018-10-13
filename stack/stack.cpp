@@ -22,7 +22,6 @@ void stack_create(STACK** memory)
 		
 		(*memory)->sum = 0;
 		
-		stack_ok(*memory);
 		st_assert(*memory);
 	}
 //}--------------------------------------------------------------------------------------------------------------------------------------
@@ -39,8 +38,8 @@ void stack_destroy(STACK** memory)
 		assert(memory != NULL);
 		
 		if(!(*memory)) return;
+		
 		st_assert(*memory);
-		stack_ok(*memory);
 		
 		free((*memory)->data);
 		
@@ -66,7 +65,6 @@ void stack_destroy(STACK** memory)
 int stack_push(data_t number, STACK* memory)
 	{
 		st_assert(memory);
-		stack_ok(memory);
 		
 		if(memory->size + 1== memory->capasity) 
 			if(stack_capasity_increase(memory));
@@ -88,7 +86,6 @@ int stack_push(data_t number, STACK* memory)
 		memory->size++;
 		
 		st_assert(memory);
-		stack_ok(memory);
 		
 		return 1;
 	}
@@ -105,7 +102,6 @@ int stack_push(data_t number, STACK* memory)
 data_t stack_pop(STACK* memory)
 	{
 		st_assert(memory);
-		stack_ok(memory);
 		
 		if(memory->size == 0) 
 			{
@@ -128,7 +124,6 @@ data_t stack_pop(STACK* memory)
 			stack_capasity_decrease(memory);
 		
 		st_assert(memory);
-		stack_ok(memory);
 		
 		return number;
 	}
@@ -146,7 +141,6 @@ data_t stack_pop(STACK* memory)
 int stack_capasity_increase(STACK* memory)
 	{
 		st_assert(memory);
-		stack_ok(memory);
 		
 		data_t* pointer;
 		
@@ -168,7 +162,6 @@ int stack_capasity_increase(STACK* memory)
 			}
 		
 		st_assert(memory);
-		stack_ok(memory);
 		
 		return 0;
 	}
@@ -184,13 +177,11 @@ int stack_capasity_increase(STACK* memory)
 void stack_capasity_decrease(STACK* memory)
 	{
 		st_assert(memory);
-		stack_ok(memory);
 		
 		memory->capasity /= 2;
 		memory->data = (data_t* )realloc(memory->data, memory->capasity*sizeof(data_t));
 		
 		st_assert(memory);
-		stack_ok(memory);
 	}
 //}--------------------------------------------------------------------------------------------------------------------------------------
 

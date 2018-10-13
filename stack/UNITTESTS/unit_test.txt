@@ -2,112 +2,1232 @@
   ERROR:
 
   stack_pop(memory) == i - false
-  0  == 199 - false
+  0  == 1999 - false
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
   ERROR:
 
   stack_pop(memory) == i - false
-  0  == 198 - false
+  0  == 1993 - false
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
   ERROR:
 
   stack_pop(memory) == i - false
-  0  == 197 - false
+  0  == 1979 - false
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
   ERROR:
 
   stack_pop(memory) == i - false
-  0  == 196 - false
+  0  == 1977 - false
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
   ERROR:
 
   stack_pop(memory) == i - false
-  0  == 193 - false
+  0  == 1911 - false
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
   ERROR:
 
   stack_pop(memory) == i - false
-  0  == 191 - false
+  0  == 1898 - false
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
   ERROR:
 
   stack_pop(memory) == i - false
-  0  == 189 - false
+  0  == 1851 - false
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
   ERROR:
 
   stack_pop(memory) == i - false
-  0  == 188 - false
+  0  == 1837 - false
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1791 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1751 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1724 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1717 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1687 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1680 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1675 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1645 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1617 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1605 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1566 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1559 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1503 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1493 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1488 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1487 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1470 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1453 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1452 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1421 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1399 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1382 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1354 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1326 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1314 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1222 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1217 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1215 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1214 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1203 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1198 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1175 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1170 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1144 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1142 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1127 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1078 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1063 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1039 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1034 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1027 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 1009 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 983 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 969 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 959 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 936 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 924 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 915 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 901 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 891 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 850 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 784 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 770 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 755 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 751 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 728 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 722 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 704 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 700 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 691 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 607 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 603 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 594 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 551 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 545 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 532 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 470 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 450 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 419 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 410 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 386 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 348 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 337 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 332 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 331 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 303 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 294 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 284 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 238 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
+
+
+
+  ERROR:
+
+  stack_pop(memory) == i - false
+  0  == 216 - false
+
+  file: main.cpp
+  function: test
+  line: 83
+
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
@@ -118,626 +1238,38 @@
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 184 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
   ERROR:
 
   stack_pop(memory) == i - false
-  0  == 183 - false
+  0  == 182 - false
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
   ERROR:
 
   stack_pop(memory) == i - false
-  0  == 181 - false
+  0  == 127 - false
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 179 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 178 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 175 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 172 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 171 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 170 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 169 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 168 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 167 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 166 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 164 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 163 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 161 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 160 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 156 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 155 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 152 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 151 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 150 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 149 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 148 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 147 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 146 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 145 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 144 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 142 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 141 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 139 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 138 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 137 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 136 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 135 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 132 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 131 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 125 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 122 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 121 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 120 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 119 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 117 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 116 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
@@ -748,24 +1280,10 @@
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 113 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
@@ -776,570 +1294,10 @@
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 110 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 109 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 108 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 107 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 106 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 103 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 102 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 100 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 98 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 96 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 95 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 94 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 93 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 92 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 91 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 90 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 89 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 87 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 85 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 81 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 79 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 78 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 77 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 75 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 74 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 73 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 72 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 70 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 69 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 67 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 63 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 62 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 60 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 59 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 58 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 57 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 55 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 54 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 53 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 50 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
@@ -1350,164 +1308,10 @@
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 45 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 42 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 41 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 40 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 39 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 38 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 35 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 34 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 33 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 31 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 30 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
@@ -1518,206 +1322,38 @@
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 28 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
   ERROR:
 
   stack_pop(memory) == i - false
-  0  == 24 - false
+  0  == 17 - false
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
   ERROR:
 
   stack_pop(memory) == i - false
-  0  == 23 - false
+  0  == 9 - false
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 22 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 21 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 20 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 18 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 14 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 12 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 11 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 10 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 7 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 5 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 4 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 
 
@@ -1728,23 +1364,9 @@
 
   file: main.cpp
   function: test
-  line: 87
+  line: 83
 
-  data: Oct 12 2018
-  time: 22:14:39
-
-
-
-  ERROR:
-
-  stack_pop(memory) == i - false
-  0  == 1 - false
-
-  file: main.cpp
-  function: test
-  line: 87
-
-  data: Oct 12 2018
-  time: 22:14:39
+  data: Oct 13 2018
+  time: 16:47:51
 
 

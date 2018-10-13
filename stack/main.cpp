@@ -14,6 +14,7 @@ int main()
 		test(memory);
 		
 	}
+	
 //{--------------------------------------------------------------------------------------------------------------------------------------
 /**
  *   @function test()
@@ -68,11 +69,11 @@ void test(STACK* memory)
 		
 		printf("attack\n");
 		
-		for(int i = 0; i <=200; i++)
+		for(int i = 0; i <=100; i++)
 			{
 				printf("\r");
-				memory->data[rand()*200/RAND_MAX] = 0;
-				print_prog_bar(i/2);
+				memory->data[rand()*2000/RAND_MAX] = 0;
+				print_prog_bar(i);
 			}
 		
 		printf("\nSTACK is poping\n");

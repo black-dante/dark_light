@@ -35,7 +35,7 @@
 				case 2:																										\
 					{																										\
 						fprintf(error_stack, "OPS st_assert %d:\n", ++error_count);											\
-						fprintf(error_stack, "WTF? struct stack %s is't correct\n",#stack);									\
+						fprintf(error_stack, "WTF? struct stack %s isn't correct\n",#stack);								\
 						fprintf(error_stack, "stack cap = %lf:\n stack size = %lf\n", (stack)->capasity, (stack)->size);	\
 						fprintf(error_stack, "stack data ponter = %ld\n", (stack)->data);									\
 						fprintf(error_stack, "file = %s\nfunc = %s\nline = %d\n", __FILE__, __FUNCSIG__, __LINE__);			\
@@ -48,13 +48,13 @@
 				case 3:																										\
 					{																										\
 						fprintf(error_stack, "OPS st_assert %d:\n", ++error_count);											\
-						fprintf(error_stack, "WTF? %s data is't correct\n",#stack);											\
+						fprintf(error_stack, "WTF? %s data isn't correct\n",#stack);										\
 						fprintf(error_stack, "file = %s\nfunc = %s\nline = %d\n", __FILE__, __FUNCSIG__, __LINE__);			\
 						fprintf(error_stack, "data = %s\ntime = %s\n", __DATE__, __TIME__);									\
 						fprintf(error_stack, "\n\n\n\n\n");																	\
 																															\
 						fprintf(error_data, "OPS st_assert %d:\n", error_count);											\
-						fprintf(error_data, "WTF? %s data is't correct\n",#stack);											\
+						fprintf(error_data, "WTF? %s data isn't correct\n",#stack);											\
 						fprintf(error_data, "file = %s\nfunc = %s\nline = %d\n", __FILE__, __FUNCSIG__, __LINE__);			\
 						fprintf(error_data, "data = %s\ntime = %s\n\n", __DATE__, __TIME__);								\
 						stack_print_info(stack, error_data);																\
@@ -67,6 +67,8 @@
 					{																										\
 						fprintf(error_stack, "OPS st_assert %d:\n", ++error_count);											\
 						fprintf(error_stack, "WTF? ERROR NUMBER ISN'T CORRECT\n");											\
+						fprintf(error_stack, "file = %s\nfunc = %s\nline = %d\n", __FILE__, __FUNCSIG__, __LINE__);			\
+						fprintf(error_stack, "data = %s\ntime = %s\n", __DATE__, __TIME__);									\
 						fprintf(error_stack, "\n\n\n\n\n");																	\
 						assert(0);																							\
 					}																										\

@@ -2,6 +2,8 @@
 
 FILE* unit_test = fopen("UNITTESTS/unit_test.txt","w");
 
+long int unit_test_error_count = 0;
+
 //{--------------------------------------------------------------------------------------------------------------------------------------
 /**
  *	UNITTEST
@@ -18,13 +20,13 @@ FILE* unit_test = fopen("UNITTESTS/unit_test.txt","w");
 																						\
 		if((var1_ oper var2_) == 0)														\
 			{																			\
-				fprintf(unit_test, "\n  ERROR:\n\n");									\
+				fprintf(unit_test, "\n  ERROR %ld:\n\n", ++unit_test_error_count);		\
 																						\
 				fprintf(unit_test, "  %s %s %s - false\n", #var1, #oper, #var2);		\
 				fprintf(unit_test, "  ");												\
-				fprint_##type1(var1_);													\
+				fprintf_##type1(var1_, unit_test);										\
 				fprintf(unit_test, "  %s ", #oper);										\
-				fprint_##type2(var2_);													\
+				fprintf_##type2(var2_, unit_test);										\
 				fprintf(unit_test, " - false\n\n");										\
 																						\
 				fprintf(unit_test, "  file: %s\n", __FILE__);							\
@@ -35,24 +37,24 @@ FILE* unit_test = fopen("UNITTESTS/unit_test.txt","w");
 			}																			\
 	}																					\
 
-void fprint_char(char num)
+void fprintf_char(char num, FILE* out)
 	{
-		fprintf(unit_test, "%c",num);
+		fprintf(out, "%c",num);
 	}
 	
-void fprint_int(int num)
+void fprintf_int(int num, FILE* out)
 	{
-		fprintf(unit_test, "%d",num);
+		fprintf(out, "%d",num);
 	}
 	
-void fprint_float(float num)
+void fprintf_float(float num, FILE* out)
 	{
-		fprintf(unit_test, "%f",num);
+		fprintf(out, "%f",num);
 	}
 	
-void fprint_double(double num)
+void fprintf_double(double num, FILE* out)
 	{
-		fprintf(unit_test, "%lf",num);
+		fprintf(out, "%lf",num);
 	}
 	
 //}--------------------------------------------------------------------------------------------------------------------------------------

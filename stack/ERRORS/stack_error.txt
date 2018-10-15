@@ -1,10 +1,10 @@
 OPS st_assert 1:
 WTF? memory data isn't correct
 file = c:\users\даниил\documents\github\dark_light\stack\stack.cpp
-func = int __cdecl stack_pop(struct stack *)
+func = char __cdecl stack_pop(struct stack *)
 line = 109
-data = Oct 13 2018
-time = 17:40:47
+data = Oct 15 2018
+time = 13:09:14
 
 
 

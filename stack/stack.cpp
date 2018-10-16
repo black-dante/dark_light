@@ -5,9 +5,10 @@
  *	@function stack_create()
  *
  *	@param[in] memory** the address at which the stack will be written
+ *  @param[in] name name of stack
  *
  */	
-void stack_create(STACK** memory)
+void stack_create(STACK** memory, char* name)
 	{
 		assert(memory != NULL);
 		
@@ -24,6 +25,24 @@ void stack_create(STACK** memory)
 		(*memory)->data[1] = CANARY;
 		
 		hash_sum_create(*memory);
+		
+		{
+		(*memory)->name = name;
+		
+		char str_name1[MAX_FILE_NAME] = {};
+		strcpy(str_name1, "ERRORS/");
+		strcat(str_name1, name);
+		
+		char str_name2[MAX_FILE_NAME] = {};
+		strcpy(str_name2, "ERRORS/");
+		strcat(str_name2, name);
+			
+		(*memory)->error_stack = fopen(strcat(str_name1, "_error_stack.txt"), "w");
+		assert((*memory)->error_stack != NULL);
+		
+		(*memory)->error_data = fopen(strcat(str_name2, "_error_data.txt"), "w");
+		assert((*memory)->error_data != NULL);
+		}
 		
 		st_assert(*memory);
 	}
@@ -50,6 +69,11 @@ void stack_destroy(STACK** memory)
 		(*memory)->size = 0;
 		(*memory)->capasity = 0;
 		(*memory)->sum = 0;
+		(*memory)->name = NULL;
+		(*memory)->error_count = 0;
+		
+		fclose((*memory)->error_stack);
+		fclose((*memory)->error_data);
 		
 		*memory = NULL;
 	}
@@ -73,11 +97,11 @@ int stack_push(data_t number, STACK* memory)
 			if(stack_capasity_increase(memory));
 			else 
 				{
-					fprintf(error_stack, "OPS st_assert %d:\n", ++ERROR_COUNT);
-					fprintf(error_stack, "STACK IS FULL\nPUSH FAILED\n");
-					fprintf(error_stack, "file = %s\nfunc = %s\nline = %d\n", __FILE__, __FUNCSIG__, __LINE__);			
-					fprintf(error_stack, "data = %s\ntime = %s\n", __DATE__, __TIME__);									
-					fprintf(error_stack, "\n\n\n\n\n");	
+					fprintf(memory->error_stack, "OPS st_assert %d:\n", ++(memory->error_count));
+					fprintf(memory->error_stack, "STACK IS FULL\nPUSH FAILED\n");
+					fprintf(memory->error_stack, "file = %s\nfunc = %s\nline = %d\n", __FILE__, __FUNCSIG__, __LINE__);			
+					fprintf(memory->error_stack, "data = %s\ntime = %s\n", __DATE__, __TIME__);									
+					fprintf(memory->error_stack, "\n\n\n\n\n");	
 					
 					return 0;
 				}
@@ -110,11 +134,11 @@ data_t stack_pop(STACK* memory)
 		
 		if(memory->size == 1) 
 			{
-				fprintf(error_stack, "OPS st_assert %d:\n", ++ERROR_COUNT);
-				fprintf(error_stack, "STACK IS EMPTY\nPOP FAILED\n"); //вывод из пустого стека
-				fprintf(error_stack, "file = %s\nfunc = %s\nline = %d\n", __FILE__, __FUNCSIG__, __LINE__);			
-				fprintf(error_stack, "data = %s\ntime = %s\n", __DATE__, __TIME__);									
-				fprintf(error_stack, "\n\n\n\n\n");	
+				fprintf(memory->error_stack, "OPS st_assert %d:\n", ++(memory->error_count));
+				fprintf(memory->error_stack, "STACK IS EMPTY\nPOP FAILED\n"); //вывод из пустого стека
+				fprintf(memory->error_stack, "file = %s\nfunc = %s\nline = %d\n", __FILE__, __FUNCSIG__, __LINE__);			
+				fprintf(memory->error_stack, "data = %s\ntime = %s\n", __DATE__, __TIME__);									
+				fprintf(memory->error_stack, "\n\n\n\n\n");	
 				
 				return 666;
 			}
@@ -127,7 +151,7 @@ data_t stack_pop(STACK* memory)
 		
 		memory->data[memory->size] = CANARY;
 		
-		if(memory->size < (memory->capasity/4) - 1)
+		if(memory->size < memory->capasity/4)
 			stack_capasity_decrease(memory);
 		
 		st_assert(memory);

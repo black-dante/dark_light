@@ -1,10 +1,10 @@
 OPS st_assert 1:
-WTF? memory data isn't correct
+WTF? stack2 data isn't correct
 file = c:\users\даниил\documents\github\dark_light\stack\stack.cpp
 func = char __cdecl stack_pop(struct stack *)
-line = 109
-data = Oct 15 2018
-time = 13:09:14
+line = 133
+data = Oct 16 2018
+time = 18:17:10
 
 
 

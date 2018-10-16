@@ -1,14 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 const double EPSILON = 0.00001;
 const size_t CAPASITY_FIRST = 100;
 const int CANARY = 66;
-size_t ERROR_COUNT = 0;
-
-FILE* error_stack = fopen("ERRORS/stack_error.txt","w");
-FILE* error_data  = fopen("ERRORS/stack_data.txt","w");
+const int MAX_FILE_NAME = 100;
 
 typedef char data_t;
 
@@ -21,11 +19,18 @@ typedef struct stack
 		
 		data_t* data;
 		
+		char* name;
+		
+		FILE* error_stack;
+		FILE* error_data;
+		
+		size_t error_count = 0;
+		
 	} STACK;
 	
 #include "st_assert.cpp"
 
-void stack_create(STACK** memory);
+void stack_create(STACK** memory, char* name);
 void stack_destroy(STACK** memory);
 
 int stack_push(data_t number, STACK* memory);

@@ -1,15 +1,14 @@
 #include "test.cpp"
 
+
 int main()
 	{
 		
-		struct stack* memory = {};
+		struct stack* memory1 = {};
 		
-		stack_create(&memory);
+		stack_create(&memory1, "stack1");
 		
-		test(memory);
+		test(memory1);
 		
-		fclose(error_stack);
-		fclose(error_data);
 		fclose(unit_test);
 	}

@@ -41,8 +41,8 @@ void test(STACK* memory)
 		stack_destroy(&memory);
 		stack_destroy(&memory);
 		
-		stack_create(&memory);
-		stack_create(&memory);
+		stack_create(&memory, "stack2");
+		stack_create(&memory, "stack2");
 		
 		printf("Test 2 with attack\n");
 		

@@ -14,7 +14,7 @@ typedef char data_t;
 
 typedef struct stack
 	{
-		size_t canary_first = CANARY;
+		size_t canary_first;
 		
 		size_t size;
 		size_t capasity;
@@ -30,7 +30,7 @@ typedef struct stack
 		
 		size_t error_count = 0;
 		
-		size_t canary_last = CANARY;
+		size_t canary_last;
 	} STACK;
 	
 #include "st_assert.cpp"

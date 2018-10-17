@@ -4,7 +4,7 @@ file = c:\users\даниил\documents\github\dark_light\stack\stack.cpp
 func = char __cdecl stack_pop(struct stack *)
 line = 140
 data = Oct 17 2018
-time = 11:08:09
+time = 11:48:35
 
 
 

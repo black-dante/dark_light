@@ -37,6 +37,7 @@
 						fprintf((stack)->error_stack, "OPS st_assert %d:\n", ++(stack)->error_count);								\
 						fprintf((stack)->error_stack, "WTF? struct stack %s isn't correct\n",(stack)->name);						\
 						fprintf((stack)->error_stack, "stack cap = %ld:\n stack size = %ld\n", (stack)->capasity, (stack)->size);	\
+						fprintf((stack)->error_stack, "canary1 = %d canary2 = %d\n", (stack)->canary_first, (stack)->canary_last);  \
 						fprintf((stack)->error_stack, "stack data ponter = %ld\n", (long int)((stack)->data));						\
 						fprintf((stack)->error_stack, "file = %s\nfunc = %s\nline = %d\n", __FILE__, __FUNCSIG__, __LINE__);		\
 						fprintf((stack)->error_stack, "data = %s\ntime = %s\n", __DATE__, __TIME__);								\
@@ -80,4 +81,4 @@
 #else																														
 	#define st_assert(stack) ;																								
 #endif
-//}--------------------------------------------------------------------------------------------------------------------------------------																														
+//}--------------------------------------------------------------------------------------------------------------------------------------											//fprintf((stack)->error_stack, "canary first = %d canary last = %d\n", (stack)->canary_first, //(stack)->canary_last);\																			

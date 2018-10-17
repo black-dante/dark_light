@@ -7,11 +7,15 @@ const double EPSILON = 0.00001;
 const size_t CAPASITY_FIRST = 100;
 const int CANARY = 66;
 const int MAX_FILE_NAME = 100;
+const double CAPASITY_INCREASE = 2;
+const double CAPASITY_DECREASE = 2;
 
 typedef char data_t;
 
 typedef struct stack
 	{
+		size_t canary_first = CANARY;
+		
 		size_t size;
 		size_t capasity;
 		
@@ -26,6 +30,7 @@ typedef struct stack
 		
 		size_t error_count = 0;
 		
+		size_t canary_last = CANARY;
 	} STACK;
 	
 #include "st_assert.cpp"

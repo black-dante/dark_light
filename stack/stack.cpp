@@ -24,6 +24,9 @@ void stack_create(STACK** memory, char* name)
 		(*memory)->data[0] = CANARY;
 		(*memory)->data[1] = CANARY;
 		
+		(*memory)->canary_first = CANARY;
+		(*memory)->canary_last = CANARY;
+		
 		hash_sum_create(*memory);
 		
 		{
@@ -71,6 +74,9 @@ void stack_destroy(STACK** memory)
 		(*memory)->sum = 0;
 		(*memory)->name = NULL;
 		(*memory)->error_count = 0;
+		(*memory)->canary_first = 0;
+		(*memory)->canary_last = 0;
+		
 		
 		fclose((*memory)->error_stack);
 		fclose((*memory)->error_data);
@@ -127,7 +133,8 @@ int stack_push(data_t number, STACK* memory)
  *	@param[in] memory* stack pointer
  *
  *  return number from stack
- */			
+ *		   66 if error
+ */
 data_t stack_pop(STACK* memory)
 	{
 		st_assert(memory);
@@ -140,7 +147,7 @@ data_t stack_pop(STACK* memory)
 				fprintf(memory->error_stack, "data = %s\ntime = %s\n", __DATE__, __TIME__);									
 				fprintf(memory->error_stack, "\n\n\n\n\n");	
 				
-				return 666;
+				return 66;
 			}
 		
 		memory->data[memory->size] = 0;
@@ -175,7 +182,7 @@ int stack_capasity_increase(STACK* memory)
 		
 		data_t* pointer;
 		
-		if((pointer = (data_t* )realloc(memory->data, memory->capasity*2*sizeof(data_t))) != NULL)
+		if((pointer = (data_t* )realloc(memory->data, memory->capasity*CAPASITY_INCREASE*sizeof(data_t))) != NULL)
 			{
 				memory->data = pointer;
 				memory->capasity *= 2;
@@ -209,7 +216,7 @@ void stack_capasity_decrease(STACK* memory)
 	{
 		st_assert(memory);
 		
-		memory->capasity /= 2;
+		memory->capasity /= CAPASITY_DECREASE;
 		memory->data = (data_t* )realloc(memory->data, memory->capasity*sizeof(data_t));
 		
 		st_assert(memory);
@@ -232,7 +239,7 @@ int stack_ok(STACK* memory)
 		if(memory == NULL)
 			return 1;
 		
-		if(!(memory->size >= 0 && memory->capasity >= memory->size  && memory->capasity > 0 && memory->data != NULL)) 
+		if(!(memory->size >= 1 && memory->capasity >= memory->size && memory->data != NULL ) || memory->canary_first != CANARY || memory->canary_last != CANARY) 
 			return 2;
 		
 		if (!(hash_sum_ok(memory)) || memory->data[0] != CANARY || memory->data[memory->size] != CANARY)

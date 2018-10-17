@@ -10,18 +10,28 @@ const int MAX_FILE_NAME = 100;
 const double CAPASITY_INCREASE = 2;
 const double CAPASITY_DECREASE = 2;
 
+#define DEBUGS
+
 typedef char data_t;
 
 typedef struct stack
 	{
+		#ifdef DEBUGS
+		
 		size_t canary_first;
+		
+		#endif
+		
 		
 		size_t size;
 		size_t capasity;
 		
-		double sum;
-		
 		data_t* data;
+		
+		
+		#ifdef DEBUGS
+		
+		double sum;
 		
 		char* name;
 		
@@ -31,6 +41,9 @@ typedef struct stack
 		size_t error_count = 0;
 		
 		size_t canary_last;
+		
+		#endif
+		
 	} STACK;
 	
 #include "st_assert.cpp"

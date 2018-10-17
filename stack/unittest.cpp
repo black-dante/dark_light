@@ -36,7 +36,7 @@ long int unit_test_error_count = 0;
 				fprintf(unit_test, "  time: %s\n\n\n", __TIME__);						\
 			}																			\
 	}																					\
-
+	
 void fprintf_char(char num, FILE* out)
 	{
 		fprintf(out, "%c",num);
@@ -56,5 +56,4 @@ void fprintf_double(double num, FILE* out)
 	{
 		fprintf(out, "%lf",num);
 	}
-	
 //}--------------------------------------------------------------------------------------------------------------------------------------

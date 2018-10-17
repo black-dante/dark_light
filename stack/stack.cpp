@@ -6,9 +6,11 @@
  *
  *	@param[in] memory** the address at which the stack will be written
  *  @param[in] name name of stack
+ *  @param[in] file of stack errors
+ *  @param[in] file of data errors
  *
  */	
-void stack_create(STACK** memory, char* name)
+void stack_create(STACK** memory, char* name, FILE* error_stack, FILE* error_data)
 	{
 		assert(memory != NULL);
 		
@@ -24,28 +26,27 @@ void stack_create(STACK** memory, char* name)
 		(*memory)->data[0] = CANARY;
 		(*memory)->data[1] = CANARY;
 		
+		#ifdef DEBUGS
+		
 		(*memory)->canary_first = CANARY;
 		(*memory)->canary_last = CANARY;
 		
 		hash_sum_create(*memory);
 		
 		{
+			
+		assert(name != NULL);
 		(*memory)->name = name;
 		
-		char str_name1[MAX_FILE_NAME] = {};
-		strcpy(str_name1, "ERRORS/");
-		strcat(str_name1, name);
-		
-		char str_name2[MAX_FILE_NAME] = {};
-		strcpy(str_name2, "ERRORS/");
-		strcat(str_name2, name);
-			
-		(*memory)->error_stack = fopen(strcat(str_name1, "_error_stack.txt"), "w");
+		(*memory)->error_stack = error_stack;
 		assert((*memory)->error_stack != NULL);
 		
-		(*memory)->error_data = fopen(strcat(str_name2, "_error_data.txt"), "w");
+		(*memory)->error_data = error_data;
 		assert((*memory)->error_data != NULL);
+		
 		}
+		
+		#endif
 		
 		st_assert(*memory);
 	}
@@ -71,6 +72,9 @@ void stack_destroy(STACK** memory)
 		(*memory)->data = NULL;
 		(*memory)->size = 0;
 		(*memory)->capasity = 0;
+		
+		#ifdef DEBUGS
+		
 		(*memory)->sum = 0;
 		(*memory)->name = NULL;
 		(*memory)->error_count = 0;
@@ -80,6 +84,8 @@ void stack_destroy(STACK** memory)
 		
 		fclose((*memory)->error_stack);
 		fclose((*memory)->error_data);
+		
+		#endif
 		
 		*memory = NULL;
 	}
@@ -103,18 +109,26 @@ int stack_push(data_t number, STACK* memory)
 			if(stack_capasity_increase(memory));
 			else 
 				{
+					#ifdef DEBUGS
+					
 					fprintf(memory->error_stack, "OPS st_assert %d:\n", ++(memory->error_count));
 					fprintf(memory->error_stack, "STACK IS FULL\nPUSH FAILED\n");
 					fprintf(memory->error_stack, "file = %s\nfunc = %s\nline = %d\n", __FILE__, __FUNCSIG__, __LINE__);			
 					fprintf(memory->error_stack, "data = %s\ntime = %s\n", __DATE__, __TIME__);									
 					fprintf(memory->error_stack, "\n\n\n\n\n");	
 					
+					#endif
+					
 					return 0;
 				}
 			
 		memory->data[memory->size] = number;
 		
+		#ifdef DEBUGS
+		
 		memory->sum += ((memory->size % 2) == 1) ? (memory->data[memory->size]) : ( - memory->data[memory->size]);
+		
+		#endif
 		
 		memory->size++;
 		
@@ -141,11 +155,15 @@ data_t stack_pop(STACK* memory)
 		
 		if(memory->size == 1) 
 			{
+				#ifdef DEBUGS
+				
 				fprintf(memory->error_stack, "OPS st_assert %d:\n", ++(memory->error_count));
 				fprintf(memory->error_stack, "STACK IS EMPTY\nPOP FAILED\n"); //вывод из пустого стека
 				fprintf(memory->error_stack, "file = %s\nfunc = %s\nline = %d\n", __FILE__, __FUNCSIG__, __LINE__);			
 				fprintf(memory->error_stack, "data = %s\ntime = %s\n", __DATE__, __TIME__);									
 				fprintf(memory->error_stack, "\n\n\n\n\n");	
+				
+				#endif
 				
 				return 66;
 			}
@@ -154,7 +172,11 @@ data_t stack_pop(STACK* memory)
 		
 		data_t number = memory->data[--memory->size];
 		
+		#ifdef DEBUGS
+		
 		memory->sum -= ((memory->size % 2) == 1) ? (memory->data[memory->size]) : ( - memory->data[memory->size]);
+		
+		#endif
 		
 		memory->data[memory->size] = CANARY;
 		
@@ -192,11 +214,11 @@ int stack_capasity_increase(STACK* memory)
 			for(size_t delta_capasity = memory->capasity/2; delta_capasity > 0; delta_capasity /= 2)
 			{	
 				if((pointer = (data_t* )realloc(memory->data, (memory->capasity + delta_capasity)*sizeof(data_t))) != NULL)
-							{
-								memory->data = pointer;
-								memory->capasity += delta_capasity;
-								return 1;
-							}
+					{
+						memory->data = pointer;
+						memory->capasity += delta_capasity;
+						return 1;
+					}
 			}
 		
 		st_assert(memory);
@@ -236,6 +258,8 @@ void stack_capasity_decrease(STACK* memory)
  */		
 int stack_ok(STACK* memory)
 	{
+		#ifdef DEBUGS
+		
 		if(memory == NULL)
 			return 1;
 		
@@ -244,6 +268,8 @@ int stack_ok(STACK* memory)
 		
 		if (!(hash_sum_ok(memory)) || memory->data[0] != CANARY || memory->data[memory->size] != CANARY)
 			return 3;
+		
+		#endif
 		
 		return 0;
 	}
@@ -304,10 +330,14 @@ void fprintf_info(double num, FILE* out)
  */	
 void hash_sum_create(STACK* memory)
 	{
+		#ifdef DEBUGS
+		
 		memory->sum = 0;
 		
 		for(int i = 0; i < memory->size; i++)
 			memory->sum += ((i % 2) == 1) ? (memory->data[i]) : ( - memory->data[i]);
+		
+		#endif
 	}
 //}--------------------------------------------------------------------------------------------------------------------------------------
 
@@ -322,12 +352,18 @@ void hash_sum_create(STACK* memory)
  */	
 int hash_sum_ok(STACK* memory)
 	{
+		#ifdef DEBUGS
+		
 		double sum = 0;
 		
 		for(int i = 0; i < memory->size; i++)
 			sum += ((i % 2) == 1) ? (memory->data[i]) : ( - memory->data[i]);
 		
 		return comp_double_with_zero(sum - memory->sum) ? 1 : 0;
+		
+		#endif
+		
+		return 1;
 	}
 //}--------------------------------------------------------------------------------------------------------------------------------------
 

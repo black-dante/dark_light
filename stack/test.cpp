@@ -14,6 +14,7 @@ void test(STACK* memory);
  
 void test(STACK* memory)
 	{
+		
 		printf("Test 1 without attack\n");
 		
 		printf("STACK is pushing\n");
@@ -37,12 +38,6 @@ void test(STACK* memory)
 			}
 			
 		printf("\nSTACK pop is ok\n");
-			
-		stack_destroy(&memory);
-		stack_destroy(&memory);
-		
-		stack_create(&memory, "stack2");
-		stack_create(&memory, "stack2");
 		
 		printf("Test 2 with attack\n");
 		

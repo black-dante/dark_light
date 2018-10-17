@@ -8,8 +8,6 @@
  *  that are in the ERRORS folder
  */	
 
-#define DEBUGS
-
 #ifdef DEBUGS																												
 	#define st_assert(stack)																										\
 		switch(stack_ok(stack))																										\

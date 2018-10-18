@@ -256,22 +256,22 @@ void stack_capasity_decrease(STACK* memory)
  *          2: fatal error
  *          3: fatal sum
  */		
-int stack_ok(STACK* memory)
+STACK_ERRORS stack_ok(STACK* memory)
 	{
 		#ifdef DEBUGS
 		
 		if(memory == NULL)
-			return 1;
+			return NULL_POINTER;
 		
 		if(!(memory->size >= 1 && memory->capasity >= memory->size && memory->data != NULL ) || memory->canary_first != CANARY || memory->canary_last != CANARY) 
-			return 2;
+			return SIZE_ERROR;
 		
 		if (!(hash_sum_ok(memory)) || memory->data[0] != CANARY || memory->data[memory->size] != CANARY)
-			return 3;
+			return UNCORRECT_DATA;
 		
 		#endif
 		
-		return 0;
+		return NO_ERRORS;
 	}
 //}--------------------------------------------------------------------------------------------------------------------------------------
 

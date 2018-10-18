@@ -13,13 +13,13 @@
 		switch(stack_ok(stack))																										\
 			{																														\
 																																	\
-				case 0:																												\
+				case NO_ERRORS:																										\
 					{																												\
 						;																											\
 					}																												\
 				break;																												\
 																																	\
-				case 1:																												\
+				case NULL_POINTER:																									\
 					{																												\
 						fprintf((stack)->error_stack, "OPS st_assert %d:\n", ++(stack)->error_count);								\
 						fprintf((stack)->error_stack, "WTF? pointer stack %s is NULL\n",(stack)->name);								\
@@ -30,7 +30,7 @@
 					}																												\
 				break;																												\
 																																	\
-				case 2:																												\
+				case SIZE_ERROR:																									\
 					{																												\
 						fprintf((stack)->error_stack, "OPS st_assert %d:\n", ++(stack)->error_count);								\
 						fprintf((stack)->error_stack, "WTF? struct stack %s isn't correct\n",(stack)->name);						\
@@ -44,7 +44,7 @@
 					}																												\
 				break;																												\
 																																	\
-				case 3:																												\
+				case UNCORRECT_DATA:																								\
 					{																												\
 						fprintf((stack)->error_stack, "OPS st_assert %d:\n", ++(stack)->error_count);								\
 						fprintf((stack)->error_stack, "WTF? %s data isn't correct\n",(stack)->name);								\

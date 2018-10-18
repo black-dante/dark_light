@@ -3,8 +3,8 @@ WTF? stack1 data isn't correct
 file = c:\users\даниил\documents\github\dark_light\stack\stack.cpp
 func = char __cdecl stack_pop(struct stack *)
 line = 154
-data = Oct 17 2018
-time = 21:52:24
+data = Oct 18 2018
+time = 18:57:28
 
 
 

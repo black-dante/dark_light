@@ -46,6 +46,15 @@ typedef struct stack
 		
 	} STACK;
 	
+	
+enum STACK_ERRORS
+	{
+		NO_ERRORS,
+		NULL_POINTER,
+		SIZE_ERROR,
+		UNCORRECT_DATA
+	};
+	
 #include "st_assert.cpp"
 
 void stack_create(STACK** memory, char* name);
@@ -57,7 +66,7 @@ data_t stack_pop(STACK* memory);
 int stack_capasity_increase(STACK* memory);
 void stack_capasity_decrease(STACK* memory);
 
-int stack_ok(STACK* memory);
+STACK_ERRORS stack_ok(STACK* memory);
 void stack_print_info(STACK* memory, FILE* info);
 
 void hash_sum_create(STACK* memory);

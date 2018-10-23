@@ -80,6 +80,6 @@ void fprintf_info(int num, FILE* out);
 void fprintf_info(float num, FILE* out);
 void fprintf_info(double num, FILE* out);
 
-#include "useful_func.cpp"
+#include "useful_func.h"
 
 #endif

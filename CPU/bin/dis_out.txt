@@ -1,0 +1,8 @@
+push 1
+popreg rax
+out
+push 1
+add
+popreg rax
+pushreg rax
+jmp 4

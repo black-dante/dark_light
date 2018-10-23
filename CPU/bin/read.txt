@@ -1,0 +1,10 @@
+push 1
+popreg rax
+
+m1:
+	out
+	push 1
+	add
+	popreg rax
+	pushreg rax
+jmp m1

@@ -1,10 +1,10 @@
 OPS st_assert 1:
 WTF? stack1 data isn't correct
-file = c:\users\даниил\documents\github\dark_light\stack\stack.cpp
-func = char __cdecl stack_pop(struct stack *)
+file = stack.cpp
+func = stack_pop
 line = 154
-data = Oct 18 2018
-time = 18:57:28
+data = Oct 23 2018
+time = 22:18:16
 
 
 

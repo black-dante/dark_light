@@ -1,4 +1,4 @@
-#include "stack.h"
+#include "../headers/stack.h"
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
 /**
@@ -80,10 +80,6 @@ void stack_destroy(STACK** memory)
 		(*memory)->error_count = 0;
 		(*memory)->canary_first = 0;
 		(*memory)->canary_last = 0;
-		
-		
-		fclose((*memory)->error_stack);
-		fclose((*memory)->error_data);
 		
 		#endif
 		

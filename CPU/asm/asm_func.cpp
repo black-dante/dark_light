@@ -1,16 +1,34 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int func_push(FILE* input, int number, ASM_BUFFER* my_buffer);
-int func_pop (FILE* input, int number, ASM_BUFFER* my_buffer);
-int func_add (FILE* input, int number, ASM_BUFFER* my_buffer);
-int func_sub (FILE* input, int number, ASM_BUFFER* my_buffer);
-int func_mul (FILE* input, int number, ASM_BUFFER* my_buffer);
-int func_div (FILE* input, int number, ASM_BUFFER* my_buffer);
-int func_out (FILE* input, int number, ASM_BUFFER* my_buffer);
-int func_jmp (FILE* input, int number, ASM_BUFFER* my_buffer);
+#define prototype(word)	int func_##word(FILE* input, int number, ASM_BUFFER* my_buffer)
+
+#define func_(word) 														\
+int func_##word(FILE* input, int number, ASM_BUFFER* my_buffer)				\
+	{																		\
+		my_buffer->buffer_int[my_buffer->buffer_count++] = number;			\
+		return 1;															\
+	}																		\
+
+
+prototype(push);
+prototype(pop);
+prototype(add);
+prototype(sub);
+prototype(mul);
+prototype(div);
+prototype(out);
+prototype(jmp);
 int func_label(FILE* input, char* label_word, ASM_BUFFER* my_buffer);
 void label_tree_upgrade(char* label_word, struct label* new_label, int position);
+
+func_(pop)
+func_(add)
+func_(sub)
+func_(mul)
+func_(div)
+func_(out)
+func_(in)
 
 int func_push(FILE* input, int number, ASM_BUFFER* my_buffer)
 	{
@@ -25,12 +43,6 @@ int func_push(FILE* input, int number, ASM_BUFFER* my_buffer)
 		
 		my_buffer->buffer_int[my_buffer->buffer_count++] = word_num;
 		
-		return 1;
-	}
-	
-int func_pop(FILE* input, int number, ASM_BUFFER* my_buffer)
-	{
-		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
 		return 1;
 	}
 	
@@ -102,43 +114,6 @@ int func_popreg(FILE* input, int number, ASM_BUFFER* my_buffer)
 			return 0;
 	}
 	
-int func_add(FILE* input, int number, ASM_BUFFER* my_buffer)
-	{
-		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
-		return 1;
-	}
-	
-int func_sub(FILE* input, int number, ASM_BUFFER* my_buffer)
-	{
-		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
-		return 1;
-	}
-	
-int func_mul(FILE* input, int number, ASM_BUFFER* my_buffer)
-	{
-		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
-		return 1;
-	}
-
-int func_div(FILE* input, int number, ASM_BUFFER* my_buffer)
-	{
-		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
-		return 1;
-	}
-
-int func_out(FILE* input, int number, ASM_BUFFER* my_buffer)
-	{
-		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
-		return 1;
-	}
-	
-int func_in(FILE* input, int number, ASM_BUFFER* my_buffer)
-	{
-		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
-		return 1;
-	}
-
-	
 int func_jmp(FILE* input, int number, ASM_BUFFER* my_buffer)
 	{
 		char word[MAXWORD];
@@ -207,3 +182,7 @@ void label_tree_upgrade(char* label_word, struct label* new_label, int position)
 		else
 			label_tree_upgrade(label_word, new_label->left_label, position);
 	}
+	
+#undef func_(word)
+#undef prototype(word)
+

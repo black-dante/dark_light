@@ -1,0 +1,116 @@
+struct key_word_t key_word[] =
+	{
+		"push", func_push,
+		"pop", func_pop,
+		"pushreg", func_pushreg,
+		"popreg", func_popreg,
+		"add", func_add,
+		"sub", func_sub,
+		"mul", func_mul,
+		"div", func_div,
+		"out", func_out,
+		"in",  func_in,
+		"jmp", func_jmp,
+		"NULL", NULL
+	};
+
+/*int func_pop(FILE* input, int number, ASM_BUFFER* my_buffer)
+	{
+		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
+		return 1;
+	}*/
+
+/*int func_add(FILE* input, int number, ASM_BUFFER* my_buffer)
+	{
+		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
+		return 1;
+	}
+	
+int func_sub(FILE* input, int number, ASM_BUFFER* my_buffer)
+	{
+		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
+		return 1;
+	}
+	
+int func_mul(FILE* input, int number, ASM_BUFFER* my_buffer)
+	{
+		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
+		return 1;
+	}
+
+int func_div(FILE* input, int number, ASM_BUFFER* my_buffer)
+	{
+		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
+		return 1;
+	}
+
+int func_out(FILE* input, int number, ASM_BUFFER* my_buffer)
+	{
+		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
+		return 1;
+	}
+	
+int func_in(FILE* input, int number, ASM_BUFFER* my_buffer)
+	{
+		my_buffer->buffer_int[my_buffer->buffer_count++] = number;
+		return 1;
+	}*/
+
+func_(pop)
+	func_(add)
+	func_(sub)
+	func_(mul)
+	func_(div)
+	func_(out)
+	func_(in)
+/*
+void func_push(FILE* output, struct buffer* my_buffer);
+void func_pop(FILE* output, struct buffer* my_buffer);
+void func_add(FILE* output, struct buffer* my_buffer);
+void func_sub(FILE* output, struct buffer* my_buffer);
+void func_mul(FILE* output, struct buffer* my_buffer);
+void func_div(FILE* output, struct buffer* my_buffer);
+void func_out(FILE* output, struct buffer* my_buffer);
+void func_jmp(FILE* output, struct buffer* my_buffer);*/
+
+/*void func_pop(FILE* output, struct buffer* my_buffer)
+	{
+		fprintf(output, "pop\n");
+		my_buffer->count++;
+	}*/
+
+/*void func_add(FILE* output, struct buffer* my_buffer)
+	{
+		fprintf(output, "add\n");
+		my_buffer->count++;
+	}
+	
+void func_sub(FILE* output, struct buffer* my_buffer)
+	{
+		fprintf(output, "sub\n");
+		my_buffer->count++;
+	}
+	
+void func_mul(FILE* output, struct buffer* my_buffer)
+	{
+		fprintf(output, "mul\n");
+		my_buffer->count++;
+	}
+	
+void func_div(FILE* output, struct buffer* my_buffer)
+	{
+		fprintf(output, "div\n");
+		my_buffer->count++;
+	}
+	
+void func_out(FILE* output, struct buffer* my_buffer)
+	{
+		fprintf(output, "out\n");
+		my_buffer->count++;
+	}
+	
+void func_in(FILE* output, struct buffer* my_buffer)
+	{
+		fprintf(output, "in\n");
+		my_buffer->count++;
+	}*/

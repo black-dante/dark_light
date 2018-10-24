@@ -1,6 +1,6 @@
 #include "stack.cpp"
 
-//const int RAM_SIZE = 1000;
+const int RAM_SIZE = 1024;
 
 typedef int cpu_elem;
 
@@ -13,7 +13,9 @@ typedef struct CPU
 		cpu_elem rcx;
 		cpu_elem rdx;
 		
-		cpu_elem* ram;
+		cpu_elem* command_buf;
+		
+		cpu_elem* RAM;
 		
 		int counter;
 		int max_ram;
@@ -45,8 +47,11 @@ void CPU_create(CPU_t** my_cpu, FILE* _asm_)
 		(*my_cpu)->rcx = 0;
 		(*my_cpu)->rdx = 0;
 		
-		(*my_cpu)->ram = read_asm_file_to_buffer(_asm_, &(*my_cpu)->max_ram);
-		assert((*my_cpu)->ram != NULL);
+		(*my_cpu)->command_buf = read_asm_file_to_buffer(_asm_, &(*my_cpu)->max_ram);
+		assert((*my_cpu)->command_buf != NULL);
+		
+		(*my_cpu)->RAM = (cpu_elem*)calloc(RAM_SIZE, sizeof(cpu_elem));
+		assert((*my_cpu)->RAM != NULL);
 		
 		(*my_cpu)->counter = 0;
 		
@@ -62,8 +67,11 @@ void CPU_destroy(CPU_t** my_cpu)
 		
 		if(!(*my_cpu)) return;
 		
-		free((*my_cpu)->ram);
-		(*my_cpu)->ram = NULL;
+		free((*my_cpu)->command_buf);
+		(*my_cpu)->command_buf = NULL;
+		
+		free((*my_cpu)->RAM);
+		(*my_cpu)->RAM = NULL;
 		
 		(*my_cpu)->rax = 0;
 		(*my_cpu)->rbx = 0;
@@ -93,7 +101,7 @@ cpu_elem* read_asm_file_to_buffer(FILE* input, int* buffer_len)
 		
 		return buffer;
 	}
-	
+
 long int size_of_file(FILE* file)
 	{
 		long int first_position = ftell(file);
@@ -114,6 +122,6 @@ void cpu_start_command(CPU_t* my_cpu)
 		printf("Ok\n");
 		while(my_cpu->counter < my_cpu->max_ram)
 			{
-				key_word[my_cpu->ram[my_cpu->counter]].func(my_cpu);
+				key_word[my_cpu->command_buf[my_cpu->counter]].func(my_cpu);
 			}
 	}

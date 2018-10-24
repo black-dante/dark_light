@@ -1,12 +1,30 @@
-void func_push(FILE* output, struct buffer* my_buffer);
-void func_pop(FILE* output, struct buffer* my_buffer);
-void func_add(FILE* output, struct buffer* my_buffer);
-void func_sub(FILE* output, struct buffer* my_buffer);
-void func_mul(FILE* output, struct buffer* my_buffer);
-void func_div(FILE* output, struct buffer* my_buffer);
-void func_out(FILE* output, struct buffer* my_buffer);
-void func_jmp(FILE* output, struct buffer* my_buffer);
 
+#define prototype(word)	void func_##word(FILE* output, struct buffer* my_buffer)
+
+#define func1(word) 															\
+void func_##word(FILE* output, struct buffer* my_buffer)						\
+	{																			\
+		fprintf(output, "pop\n");												\
+		my_buffer->count++;														\
+	}																			\
+
+
+prototype(push);
+prototype(pop);
+prototype(add);
+prototype(sub);
+prototype(mul);
+prototype(div);
+prototype(out);
+prototype(jmp);
+
+func1(pop)
+func1(add)
+func1(sub)
+func1(mul)
+func1(div)
+func1(out)
+func1(in)
 
 void func_push(FILE* output, struct buffer* my_buffer)
 	{
@@ -15,12 +33,7 @@ void func_push(FILE* output, struct buffer* my_buffer)
 		fprintf(output, "%d\n", my_buffer->data[my_buffer->count++]);
 	}
 	
-void func_pop(FILE* output, struct buffer* my_buffer)
-	{
-		fprintf(output, "pop\n");
-		my_buffer->count++;
-	}
-	
+
 void func_pushreg(FILE* output, struct buffer* my_buffer)
 	{
 		fprintf(output, "pushreg ");
@@ -72,42 +85,6 @@ void func_popreg(FILE* output, struct buffer* my_buffer)
 				break;
 			}
 			
-		my_buffer->count++;
-	}
-	
-void func_add(FILE* output, struct buffer* my_buffer)
-	{
-		fprintf(output, "add\n");
-		my_buffer->count++;
-	}
-	
-void func_sub(FILE* output, struct buffer* my_buffer)
-	{
-		fprintf(output, "sub\n");
-		my_buffer->count++;
-	}
-	
-void func_mul(FILE* output, struct buffer* my_buffer)
-	{
-		fprintf(output, "mul\n");
-		my_buffer->count++;
-	}
-	
-void func_div(FILE* output, struct buffer* my_buffer)
-	{
-		fprintf(output, "div\n");
-		my_buffer->count++;
-	}
-	
-void func_out(FILE* output, struct buffer* my_buffer)
-	{
-		fprintf(output, "out\n");
-		my_buffer->count++;
-	}
-	
-void func_in(FILE* output, struct buffer* my_buffer)
-	{
-		fprintf(output, "in\n");
 		my_buffer->count++;
 	}
 	

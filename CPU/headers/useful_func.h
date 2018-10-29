@@ -2,6 +2,7 @@
 #define USEFUL_FUNC
 
 int comp_double_with_zero(double x);
+int comp_two_double(double x1, double x2);
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
 /**
@@ -18,6 +19,13 @@ int comp_double_with_zero(double x)
 	{
 		x = x >= 0? x : -x;
 		return x < EPSILON? 1: 0;
+	}
+	
+int comp_two_double(double x1, double x2)
+	{
+		double delta_x = x1 - x2;
+		
+		return delta_x > 0? 1: -1;
 	}
 //}--------------------------------------------------------------------------------------------------------------------------------------
 

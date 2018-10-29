@@ -45,7 +45,7 @@ int type(int symbol)
 int fgetword(char *word , int limit, FILE *file)
 {
 	int symbol, type_symb;
-	if (type(symbol = *word++ = fgetch(file)) != LETTER && type(symbol) != DIGIT)
+	if (type(symbol = *word++ = fgetch(file)) != LETTER && type(symbol) != DIGIT && symbol != '-')
 		{
 			*word = '\0';
 		
@@ -67,20 +67,31 @@ int fgetword(char *word , int limit, FILE *file)
 			}
 	}
 	
-	if(type(symbol) == DIGIT)
+	if(type(symbol) == DIGIT || symbol == '-')
+	{
+	int tochka_count = 0;
+		
 	while (--limit > 0)
 		{
 			type_symb = type(symbol = *word++ = fgetch(file));
 			
 			if (type_symb != DIGIT)
 				{
-					fungetch(symbol);
+					if(type_symb == '.' && tochka_count == 0)
+						{
+							tochka_count++;
+						}
+					else
+						{
+							fungetch(symbol);
 			
-					*(word - 1) = '\0';
+							*(word - 1) = '\0';
 			
-					return(DIGIT);//возврат числа
+							return(DIGIT);//возврат числа
+						}
 				}
 		}
+	}
 	
 	return type(*word) == LETTER ? LETTER: DIGIT;
 }
@@ -123,7 +134,11 @@ int fgetword_without_prob(char *word , int limit, FILE *file)
 	{
 		int symbol = 0;
 		
-		while((symbol = fgetword(word, limit, file)) == ' ' || symbol == '\t' || symbol == '\n');
+		while((symbol = fgetword(word, limit, file)) == ' ' || symbol == '\t' || symbol == '\n' || symbol == ';')
+			{
+				if(symbol == ';')
+					while((symbol = fgetword(word, limit, file)) != '\n' && symbol != EOF);
+			}
 		
 		return symbol;
 	}

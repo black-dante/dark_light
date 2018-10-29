@@ -3,8 +3,10 @@
 #include <ctype.h>
 #include <assert.h>
 
+typedef double buf_type;
+
 long int size_of_file(FILE* file);
-int* read_asm_file_and_create_buffer(FILE* input, int* buffer_len);
+buf_type* read_asm_file_and_create_buffer(FILE* input, int* buffer_len);
 
 int main(int argc, char* argv[])
 	{
@@ -12,23 +14,23 @@ int main(int argc, char* argv[])
 		
 		int len = 0;
 		
-		int* buffer = read_asm_file_and_create_buffer(input, &len);
+		buf_type* buffer = read_asm_file_and_create_buffer(input, &len);
 		
 		for(int i = 0; i < len; i++)
-			printf("%d\n", buffer[i]);
+			printf("%lf\n", buffer[i]);
 		
 	}
 	
-int* read_asm_file_and_create_buffer(FILE* input, int* buffer_len)
+buf_type* read_asm_file_and_create_buffer(FILE* input, int* buffer_len)
 	{
 		int file_len = size_of_file(input);
 		
-		int* buffer =(int *)calloc(file_len, sizeof(char));
+		buf_type* buffer =(buf_type *)calloc(file_len, sizeof(char));
 		assert(buffer != NULL);
 		
 		int count = fread(buffer, sizeof(char), size_of_file(input), input);
 		
-		*buffer_len = count / sizeof(int);
+		*buffer_len = count / sizeof(buf_type);
 		
 		return buffer;
 		

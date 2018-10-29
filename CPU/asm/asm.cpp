@@ -1,47 +1,25 @@
-#include <string.h>
-#include <stdlib.h>
-
-const int MAXWORD = 100;
-
-struct label
-	{
-		char* name = NULL;
-		int position = -1;
-		
-		struct label* right_label = NULL;
-		struct label* left_label = NULL;
-	};
-
-typedef struct ASM_buffer
-	{
-		int* buffer_int;
-		int buffer_count;
-		//int label_buffer[10] = {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1};
-		struct label* first_label = (struct label*)calloc(1, sizeof(struct label));
-		
-	} ASM_BUFFER;
-
-#include "../read_functions/fgetword.cpp"
-#include "asm_func.cpp"
-#include "../headers/key_words_asm.h"
+#include "../headers/asm_header.h"
 
 int find_key_word(char* word);
 int correc_end_of_line(FILE* input);
 long int size_of_file(FILE* file);
+ASM_BUFFER* create_asm_buffer(FILE* read);
+int line_number(FILE* input);
 
 
+//{--------------------------------------------------------------------------------------------------------------------------------------
 void asmm(FILE* input, ASM_BUFFER* my_buffer)
 	{
 		long int first_position = ftell(input);
 		
 		char word[MAXWORD];
-		int c = 0;
+		int symbol = 0;
 		
 		my_buffer->buffer_count = 0;
 		
-		while((c = fgetword_without_prob(word, MAXWORD, input)) != EOF)
+		while((symbol = fgetword_without_prob(word, MAXWORD, input)) != EOF)
 			{
-				if(type(c) == LETTER)
+				if(type(symbol) == LETTER)
 					{
 						int number = 0;
 						if((number = find_key_word(word)) == -1)
@@ -49,37 +27,24 @@ void asmm(FILE* input, ASM_BUFFER* my_buffer)
 								if(func_label(input, word, my_buffer) == 0)
 								{
 									printf("SYNTAX ERROR: %s - isn't word or label\n", word);
+									printf("\nLine number = %d\n", line_number(input));
 									break;
 								}
 							}
 							
-						//else if(func_word(input, number, my_buffer) == 0)
 						else if(key_word[number].func(input, number, my_buffer) == 0)
 							{
-								printf("SYNTAX ERROR: %s - uncorrect operator argument\n", word);
+								printf("\nSYNTAX ERROR: %s - uncorrect operator argument\n", word);
+								printf("\nLine number = %d\n", line_number(input));
 								break;
 							}
 						
-						/*if(correc_end_of_line(input) == 0)
-							{
-								printf("SYNTAX ERROR: %s uncorrect end operator", word);
-								break;
-							}	*/
 					}
-					
-				/*else if(type(c) == DIGIT && word[1] == '\0')
-					{
-						if(func_label(input, word[0], my_buffer) == 0)
-							{
-								printf("SYNTAX ERROR: %s - uncorrect label", word);
-								break;
-							}
-							
-					}*/
 					
 				else
 					{
-						printf("SYNTAX ERROR: %c - uncorrect symbol", c);
+						printf("\nSYNTAX ERROR: %c - uncorrect symbol\n", symbol);
+						printf("\nLine number = %d\n", line_number(input));
 						break;
 					}
 			}
@@ -87,8 +52,10 @@ void asmm(FILE* input, ASM_BUFFER* my_buffer)
 			fseek(input, 0, first_position);
 			
 	}
-	
-	
+//}--------------------------------------------------------------------------------------------------------------------------------------	
+
+
+//{--------------------------------------------------------------------------------------------------------------------------------------	
 int find_key_word(char* word)
 	{
 		int key_world_length = 0;
@@ -101,48 +68,68 @@ int find_key_word(char* word)
 		
 		return -1;
 	}
+//}--------------------------------------------------------------------------------------------------------------------------------------
 	
-/*int correc_end_of_line(FILE* input)
-	{
-		int c = 0;
-		char word[MAXWORD];
-		
-		if(fgetword_without_prob(word, MAXWORD, input) != ';') return 0;
-		
-		return 1;
-	}*/
-	
+//{--------------------------------------------------------------------------------------------------------------------------------------
 long int size_of_file(FILE* file)
-	{
-		long int first_position = ftell(file);
-	
-		long int file_size = 0;
-		
+	{	
 		fseek(file, 0, SEEK_END);
 		
-		file_size = ftell(file) - first_position;
+		long int file_size = ftell(file);
 		
-		fseek(file, 0, first_position);
+		fseek(file, 0, SEEK_SET);
 		
 		return file_size;
 	}
+//}--------------------------------------------------------------------------------------------------------------------------------------
 
 
+//{--------------------------------------------------------------------------------------------------------------------------------------
+ASM_BUFFER* create_asm_buffer(FILE* read)
+	{
+		ASM_BUFFER* my_buffer = (ASM_BUFFER* )calloc(1, sizeof(ASM_BUFFER));
+		
+		my_buffer->data = (buf_type* )calloc(size_of_file(read)*sizeof(buf_type), sizeof(char));
+		
+		my_buffer->first_label = (struct label*)calloc(1, sizeof(struct label));
+		
+		return my_buffer;
+	}
+//}--------------------------------------------------------------------------------------------------------------------------------------
+
+
+//{--------------------------------------------------------------------------------------------------------------------------------------
+int line_number(FILE* input)
+	{
+		int max_count = ftell(input);
+		
+		fseek(input, 0, SEEK_SET);
+		int n_counter = 0;
+		int symbol = 0;
+		
+		for(int i = 0; i < max_count; i++)
+			{
+				symbol = fgetch(input);
+				if(symbol == '\n')
+					n_counter++;
+			}
+			
+		return n_counter;
+	}
+//}--------------------------------------------------------------------------------------------------------------------------------------
+
+//{--------------------------------------------------------------------------------------------------------------------------------------
 int main(int argc, char* argv[])
 	{
 		FILE* read = fopen(argv[1], "r");
 	
-		
-		ASM_BUFFER* my_buffer = (ASM_BUFFER* )calloc(1, sizeof(ASM_BUFFER));
-		
-		my_buffer->buffer_int = (int* )calloc(size_of_file(read), sizeof(char));
-		
-		my_buffer->first_label = (struct label*)calloc(1, sizeof(struct label));
+		ASM_BUFFER* my_buffer = create_asm_buffer(read);
 	
 		asmm(read, my_buffer);
 		asmm(read, my_buffer);
 		
 		FILE* output = fopen("out.asm", "w");
 		
-		fwrite(my_buffer->buffer_int, sizeof(char), my_buffer->buffer_count*sizeof(int), output);
+		fwrite(my_buffer->data, sizeof(char), my_buffer->buffer_count*sizeof(buf_type), output);
 	}
+//}--------------------------------------------------------------------------------------------------------------------------------------

@@ -15,7 +15,7 @@ const double CAPASITY_DECREASE = 2;
 
 #define DEBUGS
 
-typedef char data_t;
+typedef double data_t;
 
 typedef struct stack
 	{

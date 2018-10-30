@@ -1,0 +1,9 @@
+push 12.00
+push rax
+add
+push rbx
+add
+push 14.00
+add
+pop sys_reg
+push [sys_reg]

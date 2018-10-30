@@ -1,0 +1,2 @@
+pop
+push [ rax + rbx - 12 - rdx]

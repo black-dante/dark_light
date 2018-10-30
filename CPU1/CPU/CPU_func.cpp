@@ -2,6 +2,10 @@
 #include <math.h>
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * prototypes
+  *
+  */
 #define CMD(word) cpu_elem cpu_##word(CPU_t* my_cpu);
 
 #define COMMANDS_CPU
@@ -17,9 +21,18 @@
 
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * @function cpu_push()
+  *
+  * push options
+  *		0: the number written in the second parameter is passed
+  *     1: write to RAM
+  *		others: writing to registers
+  */
 #define reg(reg_name) 							\
 case reg_name:									\
 stack_push(my_cpu->reg_name, my_cpu->stack);	\
+my_cpu->counter++;								\
 break;											\
 
 
@@ -29,13 +42,15 @@ cpu_elem cpu_push(CPU_t* my_cpu)
 		
 		switch((int)(my_cpu->command_buf[my_cpu->counter]))
 			{
-				case 0:
+				case default_write:
 				my_cpu->counter++;
-				PUSH(my_cpu->command_buf[(int)(my_cpu->counter)]);
+				PUSH(*(cpu_elem* )(my_cpu->command_buf + my_cpu->counter));
+				my_cpu->counter += sizeof(cpu_elem);
 				break;
 				
-				case 1:
+				case write_to_ram:
 				PUSH(my_cpu->RAM[(int)(my_cpu->sys_reg)]);
+				my_cpu->counter++;
 				break;
 				
 				#define REGISTERS_CPU
@@ -47,7 +62,7 @@ cpu_elem cpu_push(CPU_t* my_cpu)
 				printf("HELLO");
 			}
 		
-		my_cpu->counter++;
+		
 		return 0;
 	}
 	
@@ -56,6 +71,14 @@ cpu_elem cpu_push(CPU_t* my_cpu)
 
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * @function cpu_pop()
+  *
+  * pop options
+  *		0: extract number from stack
+  *     1: extract number from ram
+  *		others: extract number from registers
+  */
 #define reg(reg_name) 							\
 case reg_name:									\
 my_cpu->reg_name = stack_pop(my_cpu->stack);    \
@@ -68,11 +91,11 @@ cpu_elem cpu_pop(CPU_t* my_cpu)
 		
 		switch((int)(my_cpu->command_buf[my_cpu->counter]))
 			{
-				case 0:
+				case default_write:
 				POP();
 				break;
 				
-				case 1:
+				case write_to_ram:
 				my_cpu->RAM[(int)(my_cpu->sys_reg)] = POP();
 				break;
 				
@@ -92,7 +115,11 @@ cpu_elem cpu_pop(CPU_t* my_cpu)
 
 
 
-//{--------------------------------------------------------------------------------------------------------------------------------------	
+//{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * functions without parameters
+  *
+  */	
 cpu_elem cpu_add(CPU_t* my_cpu)
 	{
 		my_cpu->counter++;
@@ -155,14 +182,14 @@ cpu_elem cpu_in(CPU_t* my_cpu)
 cpu_elem cpu_jmp(CPU_t* my_cpu)
 	{
 		my_cpu->counter++;
-		my_cpu->counter = my_cpu->command_buf[my_cpu->counter];
+		my_cpu->counter = *(int* )(my_cpu->command_buf+my_cpu->counter);
 	}
 	
 cpu_elem cpu_call(CPU_t* my_cpu)
 	{
-		my_cpu->counter += 2;
+		my_cpu->counter += 1 + sizeof(int);
 		stack_push(my_cpu->counter, my_cpu->command_pointer);
-		my_cpu->counter = my_cpu->command_buf[my_cpu->counter - 1];
+		my_cpu->counter = *(int* )(my_cpu->command_buf + my_cpu->counter - sizeof(int));
 	}
 
 cpu_elem cpu_ret(CPU_t* my_cpu)
@@ -202,7 +229,13 @@ cpu_elem cpu_end(CPU_t* my_cpu)
 	
 	
 	
-//{--------------------------------------------------------------------------------------------------------------------------------------	
+//{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * @function cpu_cmp()
+  * function comparing registers or numbers 
+  * and setting flags depending on the comparison results
+  *
+  */	
 cpu_elem cpu_cmp(CPU_t* my_cpu)
 	{
 		my_cpu->counter++;
@@ -211,14 +244,16 @@ cpu_elem cpu_cmp(CPU_t* my_cpu)
 		
 		switch((int)(my_cpu->command_buf[my_cpu->counter]))
 			{
-				case 0:
+				case default_write:
 				my_cpu->counter++;
-				a = my_cpu->command_buf[my_cpu->counter];
+				a = *(cpu_elem* )(my_cpu->command_buf + my_cpu->counter);
+				my_cpu->counter += sizeof(cpu_elem);
 				break;
 				
 				#define reg(reg_name)							\
 				case reg_name:									\
 				a = my_cpu->reg_name;							\
+				my_cpu->counter++;								\
 				break;											\
 				
 				
@@ -230,18 +265,20 @@ cpu_elem cpu_cmp(CPU_t* my_cpu)
 				#undef reg(reg_name)
 			}
 			
-		my_cpu->counter++;
+		
 		
 		switch((int)(my_cpu->command_buf[my_cpu->counter]))
 			{
-				case 0:
+				case default_write:
 				my_cpu->counter++;
-				b = my_cpu->command_buf[my_cpu->counter];
+				b = *(cpu_elem* )(my_cpu->command_buf + my_cpu->counter);
+				my_cpu->counter += sizeof(cpu_elem);
 				break;
 				
 				#define reg(reg_name)							\
 				case reg_name:									\
 				b = my_cpu->reg_name;							\
+				my_cpu->counter++;								\
 				break;											\
 				
 				
@@ -269,19 +306,24 @@ cpu_elem cpu_cmp(CPU_t* my_cpu)
 				my_cpu->CF = 1;
 			}
 			
-		my_cpu->counter++;
+		
 	}
 //}--------------------------------------------------------------------------------------------------------------------------------------
 
 
-//{--------------------------------------------------------------------------------------------------------------------------------------	
+//{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * conditional and unconditional transition functions
+  * first parameter is the transition address
+  *
+  */	
 #define jump_command(jump_name, condition)					\
 cpu_elem cpu_##jump_name(CPU_t* my_cpu)						\
 	{														\
 		if(condition)										\
 			cpu_jmp(my_cpu);								\
 		else												\
-			my_cpu->counter+=2;								\
+			my_cpu->counter += 1 + sizeof(int);				\
 	}														\
 	
 jump_command(je, my_cpu->ZF == 1)

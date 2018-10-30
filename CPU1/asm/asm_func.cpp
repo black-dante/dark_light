@@ -1,7 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <assert.h> word
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * prototypes
+  *
+  */
 #define CMD(word) int func_##word(FILE* input, int number, ASM_BUFFER* my_buffer);
 	
 #define COMMANDS_CPU
@@ -15,11 +20,18 @@ void label_tree_upgrade(char* label_word, struct label* new_label, int position)
 
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * functions without parameters
+  *
+  */
 #define func_(word) 														\
 int func_##word(FILE* input, int number, ASM_BUFFER* my_buffer)				\
 	{																		\
+		assert(input != NULL);												\
+		assert(my_buffer != NULL);											\
+																			\
 		my_buffer->data[my_buffer->buffer_count++] = number;				\
-		return 1;															\
+		return true;														\
 	}
 	
 func_(add)
@@ -39,11 +51,24 @@ func_(end)
 
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * push and pop functions
+  *
+  * push options
+  *		0: the number written in the second parameter is passed
+  *     1: write to RAM
+  *		others: writing to registers
+  *
+  * pop options
+  *		0: extract number from stack
+  *     1: extract number from ram
+  *		others: extract number from registers
+  */
 #define reg(reg_name) 														\
 if(strcmp(word, #reg_name) == 0) 											\
 	{																		\
 		my_buffer->data[my_buffer->buffer_count++] = reg_name;				\
-		return 1;															\
+		return true;														\
 	}																		\	
 
 	
@@ -51,7 +76,7 @@ if(strcmp(word, #reg_name) == 0) 											\
 my_buffer->buffer_count--;													\
 func_push(input, push_number, my_buffer);									\
 																			\
-while(1)																	\
+while(true)																	\
 	{																		\
 		char word_znak[MAXWORD];											\
 		int symbol = fgetword_without_prob(word_znak, MAXWORD, input);		\
@@ -67,19 +92,37 @@ while(1)																	\
 		else if (symbol == '-')												\
 			func_sub(input, sub_number, my_buffer);							\
 		else																\
-			return 1;														\
+			return false;													\
 																			\
 	}																		\
 	
 
 int func_push(FILE* input, int number, ASM_BUFFER* my_buffer)
 	{
-		char word[MAXWORD];
+		assert(input != NULL);
+		assert(my_buffer != NULL);
+		
+		char word[MAXWORD + 1];
 		
 		my_buffer->data[my_buffer->buffer_count++] = number;
 		
 		if(fgetword_without_prob(word, MAXWORD, input) != DIGIT)
 			{
+				if(strcmp(word, "-") == 0)
+					{
+						my_buffer->data[my_buffer->buffer_count++] = default_write;//аргумент число
+						
+						if(fgetword_without_prob(word, MAXWORD, input) != DIGIT)
+							return false;
+						
+						buf_type word_num = -atof(word);
+		
+						*(buf_type* )(my_buffer->data + my_buffer->buffer_count) = word_num;
+						my_buffer->buffer_count += sizeof(buf_type);
+						
+						return true;
+					}
+				
 				if(strcmp(word, "[") == 0)
 					{
 						command_conversion
@@ -89,7 +132,7 @@ int func_push(FILE* input, int number, ASM_BUFFER* my_buffer)
 						my_buffer->data[my_buffer->buffer_count++] = push_number;//номер команды пуш
 						my_buffer->data[my_buffer->buffer_count++] = write_to_ram;//команда push [sys_reg]
 						
-						return 1;
+						return true;
 						
 					}
 				
@@ -98,25 +141,31 @@ int func_push(FILE* input, int number, ASM_BUFFER* my_buffer)
 				#undef REGISTERS_CPU
 				reg(sys_reg)
 				
-				printf("push_error");
-				
+				return false;
 			}
+		
 		
 		my_buffer->data[my_buffer->buffer_count++] = default_write;//аргумент число
 		
 		buf_type word_num = atof(word);
 		
-		my_buffer->data[my_buffer->buffer_count++] = word_num;
+		*(buf_type* )(my_buffer->data + my_buffer->buffer_count) = word_num;
+		my_buffer->buffer_count += sizeof(buf_type);
 		
-		return 1;
+		return true;
 	}
 	
 int func_pop(FILE* input, int number, ASM_BUFFER* my_buffer)
 	{
+		assert(input != NULL);
+		assert(my_buffer != NULL);
+		
 		char word[MAXWORD];
 		my_buffer->data[my_buffer->buffer_count++] = number;
 		
-		if(fgetword_without_prob(word, MAXWORD, input) != LETTER)
+		int symbol = 0;
+		
+		if((symbol = fgetword_without_prob(word, MAXWORD, input)) != LETTER && symbol != EOF)
 			{
 				if(strcmp(word, "[") == 0)
 					{
@@ -127,11 +176,10 @@ int func_pop(FILE* input, int number, ASM_BUFFER* my_buffer)
 						my_buffer->data[my_buffer->buffer_count++] = pop_number;//номер команды pop
 						my_buffer->data[my_buffer->buffer_count++] = write_to_ram;//команда pop [sys_reg]
 						
-						return 1;
+						return true;
 					}
 					
-				printf("pop_error");
-				return 0;
+				return false;
 			}
 		
 		#define REGISTERS_CPU
@@ -143,7 +191,7 @@ int func_pop(FILE* input, int number, ASM_BUFFER* my_buffer)
 		
 		my_buffer->data[my_buffer->buffer_count++] = default_write;//нет регистра
 		
-		return 1;
+		return true;
 		
 	}
 
@@ -152,41 +200,48 @@ int func_pop(FILE* input, int number, ASM_BUFFER* my_buffer)
 //}--------------------------------------------------------------------------------------------------------------------------------------
 
 
-//{--------------------------------------------------------------------------------------------------------------------------------------	
-#define jump_command(jump_name)																	\
-int func_##jump_name(FILE* input, int number, ASM_BUFFER* my_buffer)							\
-	{																							\
-		char word[MAXWORD];																		\
-																								\
-		my_buffer->data[my_buffer->buffer_count++] = number;									\
-																								\
-		if(fgetword_without_prob(word, MAXWORD, input) != LETTER)								\
-			{																					\
-				printf("%s error", #jump_name);													\
-				return 0;																		\
-			}																					\
-																								\
-		struct label* label_copy = my_buffer->first_label;										\
-																								\
-		while(label_copy->name != NULL)															\
-			{																					\
-				if(strcmp(label_copy->name, word) == 0)											\
-					{																			\
-						my_buffer->data[my_buffer->buffer_count++] = label_copy->position;		\
-						return 1;																\
-					}																			\
-																								\
-				else if(strcmp(label_copy->name, word) > 0)										\
-					label_copy = label_copy->right_label;										\
-																								\
-				else																			\
-					label_copy = label_copy->left_label;										\
-			}																					\
-																								\
-		my_buffer->data[my_buffer->buffer_count++] = -1;										\
-																								\
-		return 1;																				\
-	}																							\
+//{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * conditional and unconditional transition functions
+  * first parameter is the transition address
+  *
+  */	
+#define jump_command(jump_name)																			\
+int func_##jump_name(FILE* input, int number, ASM_BUFFER* my_buffer)									\
+	{																									\
+		assert(input != NULL);																			\
+		assert(my_buffer != NULL);																		\
+																										\
+		char word[MAXWORD];																				\
+																										\
+		my_buffer->data[my_buffer->buffer_count++] = number;											\
+																										\
+		if(fgetword_without_prob(word, MAXWORD, input) != LETTER)										\
+				return 0;																				\
+																										\
+		struct label* label_copy = my_buffer->first_label;												\
+																										\
+		while(label_copy->name != NULL)																	\
+			{																							\
+				if(strcmp(label_copy->name, word) == 0)													\
+					{																					\
+						*(int* )(my_buffer->data + my_buffer->buffer_count) = label_copy->position;		\
+						my_buffer->buffer_count += sizeof(int);											\
+						return 1;																		\
+					}																					\
+																										\
+				else if(strcmp(label_copy->name, word) > 0)												\
+					label_copy = label_copy->right_label;												\
+																										\
+				else																					\
+					label_copy = label_copy->left_label;												\
+			}																							\
+																										\
+		*(int* )(my_buffer->data + my_buffer->buffer_count) = -1;										\
+		my_buffer->buffer_count += sizeof(int);															\
+																										\
+		return true;																					\
+	}																									\
 
 	
 jump_command(jmp)
@@ -203,6 +258,12 @@ jump_command(jbe)
 
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * @function func_cmp()
+  * function comparing registers or numbers 
+  * and setting flags depending on the comparison results
+  *
+  */
 #define reg(reg_name) 														\
 if(strcmp(word, #reg_name) == 0) 											\
 	{																		\
@@ -212,7 +273,10 @@ if(strcmp(word, #reg_name) == 0) 											\
 	
 int func_cmp(FILE* input, int number, ASM_BUFFER* my_buffer)
 	{
-		char word[MAXWORD];
+		assert(input != NULL);
+		assert(my_buffer != NULL);
+		
+		char word[MAXWORD + 1];
 		
 		my_buffer->data[my_buffer->buffer_count++] = number;
 		
@@ -223,7 +287,8 @@ int func_cmp(FILE* input, int number, ASM_BUFFER* my_buffer)
 				case DIGIT:													
 	
 				my_buffer->data[my_buffer->buffer_count++] = 0;				
-				my_buffer->data[my_buffer->buffer_count++] = atof(word);	
+				*(buf_type* )(my_buffer->data + my_buffer->buffer_count) = atof(word);
+				my_buffer->buffer_count += sizeof(buf_type);
 
 				break;														
 
@@ -234,11 +299,20 @@ int func_cmp(FILE* input, int number, ASM_BUFFER* my_buffer)
 				#undef REGISTERS_CPU										
 				reg(sys_reg)											
 
-				break;														
+				break;	
+				
+				case '-':
+				
+				if(fgetword_without_prob(word, MAXWORD, input) != DIGIT)
+					return false;
+				my_buffer->data[my_buffer->buffer_count++] = 0;				
+				*(buf_type* )(my_buffer->data + my_buffer->buffer_count) = -atof(word);
+				my_buffer->buffer_count += sizeof(buf_type);
+				
+				break;
 
 				default:		
-				printf("CMP error");
-				return 0;													
+				return false;													
 				break;														
 			}			
 			
@@ -249,7 +323,8 @@ int func_cmp(FILE* input, int number, ASM_BUFFER* my_buffer)
 				case DIGIT:													
 
 				my_buffer->data[my_buffer->buffer_count++] = 0;			
-				my_buffer->data[my_buffer->buffer_count++] = atof(word);	
+				*(buf_type* )(my_buffer->data + my_buffer->buffer_count) = -atof(word);
+				my_buffer->buffer_count += sizeof(buf_type);	
 
 				break;														
 
@@ -260,42 +335,59 @@ int func_cmp(FILE* input, int number, ASM_BUFFER* my_buffer)
 				#undef REGISTERS_CPU										
 				reg(sys_reg)												
 
-				break;														
+				break;
 
-				default:
-				printf("CMP error");				
-				return 0;													
+				case '-':
+				
+				if(fgetword_without_prob(word, MAXWORD, input) != DIGIT)
+					return false;
+				my_buffer->data[my_buffer->buffer_count++] = 0;				
+				*(buf_type* )(my_buffer->data + my_buffer->buffer_count) = -atof(word);
+				my_buffer->buffer_count += sizeof(buf_type);
+				
+				break;				
+
+				default:				
+				return false;													
 				break;														
 			}			
 			
-		return 1;
+		return true;
 	}
 	
 #undef reg(reg_name)
 //}--------------------------------------------------------------------------------------------------------------------------------------
 
 
-//{--------------------------------------------------------------------------------------------------------------------------------------	
+//{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  *
+  * functions for tags. Implemented through the trees
+  *
+  */
 int func_label(FILE* input, char* label_word, ASM_BUFFER* my_buffer)
 	{
-		char word[MAXWORD];
+		
+		char* word = (char* ) calloc(MAXWORD, sizeof(char));
 		
 		if(fgetword(word, MAXWORD, input) != ':')
-			return 0;
+			return false;
 		
 		label_tree_upgrade(label_word, my_buffer->first_label, my_buffer->buffer_count);
 		
-		return 1;
+		return true;
 	}
 	
 void label_tree_upgrade(char* label_word, struct label* new_label, int position)
 	{
+		
 		if(new_label->name == NULL)
 			{
+
 				new_label->name = (char*)calloc(strlen(label_word), sizeof(char));
 				strcpy(new_label->name, label_word);
 				new_label->position = position;
-				
+
 				new_label->right_label = (struct label*)calloc(1, sizeof(struct label));
 				new_label->left_label = (struct label*)calloc(1, sizeof(struct label));
 				return;

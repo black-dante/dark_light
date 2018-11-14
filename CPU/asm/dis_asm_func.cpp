@@ -1,4 +1,10 @@
+#include "../headers/useful_func.h"
+#include <assert.h>
 //{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * prototypes
+  *
+  */
 #define CMD(word) void func_##word(FILE* output, struct buffer* my_buffer);
 
 #define COMMANDS_CPU
@@ -10,9 +16,16 @@
 
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * functions without parameters
+  *
+  */
 #define func1(word) 															\
 void func_##word(FILE* output, struct buffer* my_buffer)						\
 	{																			\
+		assert(output != NULL);													\
+		assert(my_buffer != NULL);												\
+																				\
 		fprintf(output, "%s\n", #word);											\
 		my_buffer->count++;														\
 	}																			\
@@ -35,6 +48,19 @@ func1(end)
 
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * push and pop functions
+  *
+  * push options
+  *		0: the number written in the second parameter is passed
+  *     1: write to RAM
+  *		others: writing to registers
+  *
+  * pop options
+  *		0: extract number from stack
+  *     1: extract number from ram
+  *		others: extract number from registers
+  */
 #define reg(reg_name)										\
 case reg_name:												\
 fprintf(output, "%s\n", #reg_name);							\
@@ -44,17 +70,22 @@ break;														\
 
 void func_push(FILE* output, struct buffer* my_buffer)
 	{
+		assert(output != NULL);
+		assert(my_buffer != NULL);
+		
 		fprintf(output, "push ");
 		my_buffer->count++;
 
 		switch((int)(my_buffer->data[my_buffer->count]))
 			{
-				case 0:
+				case default_write:
 				my_buffer->count++;
-				fprintf(output, "%lf\n", my_buffer->data[my_buffer->count++]);
+				fprintf_num(output, *(buf_type* )(my_buffer->data + my_buffer->count));
+				fprintf(output, "\n");
+				my_buffer->count += sizeof(buf_type);
 				break;
 				
-				case 1:
+				case write_to_ram:
 				fprintf(output, "[sys_reg]\n");
 				my_buffer->count++;
 				break;
@@ -69,16 +100,19 @@ void func_push(FILE* output, struct buffer* my_buffer)
 	
 void func_pop(FILE* output, struct buffer* my_buffer)
 	{
+		assert(output != NULL);
+		assert(my_buffer != NULL);
+		
 		fprintf(output, "pop ");
 		my_buffer->count++;
 		switch((int)(my_buffer->data[my_buffer->count]))
 			{
-				case 0:
+				case default_write:
 				fprintf(output, "\n");
 				my_buffer->count++;
 				break;
 				
-				case 1:
+				case write_to_ram:
 				fprintf(output, "[sys_reg]\n");
 				my_buffer->count++;
 				break;
@@ -97,22 +131,33 @@ void func_pop(FILE* output, struct buffer* my_buffer)
 
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * @function func_cmp()
+  * function comparing registers or numbers 
+  * and setting flags depending on the comparison results
+  *
+  */
 #define reg(reg_name)							\
 case reg_name:									\
 fprintf(output, "%s", #reg_name);				\
+my_buffer->count++;                             \
 break;											\
 
 
 void func_cmp(FILE* output, struct buffer* my_buffer)
 	{
+		assert(output != NULL);
+		assert(my_buffer != NULL);
+		
 		fprintf(output, "cmp ");
 		my_buffer->count++;
 		
 		switch((int)(my_buffer->data[my_buffer->count]))
 			{
-				case 0:
+				case default_write:
 				my_buffer->count++;
-				fprintf(output,"%lf", my_buffer->data[my_buffer->count]);
+				fprintf_num(output, *(buf_type* )(my_buffer->data + my_buffer->count));
+				my_buffer->count += sizeof(buf_type);
 				break;
 				
 				reg(sys_reg)
@@ -124,13 +169,14 @@ void func_cmp(FILE* output, struct buffer* my_buffer)
 		
 		fprintf(output," ");
 		
-		my_buffer->count++;
+
 		
 		switch((int)(my_buffer->data[my_buffer->count]))
 			{
-				case 0:
+				case default_write:
 				my_buffer->count++;
-				fprintf(output,"%lf", my_buffer->data[my_buffer->count]);
+				fprintf_num(output, *(buf_type* )(my_buffer->data + my_buffer->count));
+				my_buffer->count += sizeof(buf_type);
 				break;
 				
 				reg(sys_reg)
@@ -148,12 +194,21 @@ void func_cmp(FILE* output, struct buffer* my_buffer)
 
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * conditional and unconditional transition functions
+  * first parameter is the transition address
+  *
+  */
 #define jump_command(jump_name)																	\
 void func_##jump_name(FILE* output, struct buffer* my_buffer)									\
 	{																							\
+		assert(output != NULL);																	\
+		assert(my_buffer != NULL);																\
+																								\
 		fprintf(output, "%s ", #jump_name);														\
 		my_buffer->count++;																		\
-		fprintf(output, "%lf\n", my_buffer->data[my_buffer->count++]);							\
+		fprintf(output, "%d\n", *(int* )(my_buffer->data + my_buffer->count));					\
+		my_buffer->count += sizeof(int);                                                  		\
 	}																							\
 	
 jump_command(jmp)

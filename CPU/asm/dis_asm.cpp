@@ -2,10 +2,16 @@
 
 
 long int size_of_file(FILE* file);
-buf_type* read_asm_file_and_create_buffer(FILE* input, int* buffer_len);
+char* read_asm_file_and_create_buffer(FILE* input, int* buffer_len);
 
 
 //{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * @function main()
+  *
+  * @param[in] argc
+  * @param[in] *argv[]
+  */
 int main(int argc, char* argv[])
 	{
 		FILE* input = fopen(argv[1], "r");
@@ -22,20 +28,28 @@ int main(int argc, char* argv[])
 //}--------------------------------------------------------------------------------------------------------------------------------------
 
 
-//{--------------------------------------------------------------------------------------------------------------------------------------	
-buf_type* read_asm_file_and_create_buffer(FILE* input, int* buffer_len)
+//{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * @function read_asm_file_and_create_buffer()
+  *
+  * @param[in] input file
+  * @param[in] buffer_len pointer to variable storing buffer length
+  *
+  * @return buffer
+  */	
+char* read_asm_file_and_create_buffer(FILE* input, int* buffer_len)
 	{
 		assert(input != NULL);
 		assert(buffer_len != NULL);
 		
 		int file_len = size_of_file(input);
 		
-		buf_type* buffer =(buf_type *)calloc(file_len, sizeof(char));
+		char* buffer =(char *)calloc(file_len, sizeof(char));
 		assert(buffer != NULL);
 		
 		int count = fread(buffer, sizeof(char), file_len, input);
 		
-		*buffer_len = count / sizeof(buf_type);
+		*buffer_len = count;
 		
 		return buffer;
 		
@@ -43,7 +57,14 @@ buf_type* read_asm_file_and_create_buffer(FILE* input, int* buffer_len)
 //}--------------------------------------------------------------------------------------------------------------------------------------
 
 
-//{--------------------------------------------------------------------------------------------------------------------------------------	
+//{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  * @function size_of_file()
+  *
+  * @param[in] file
+  *
+  * @return file size
+  */	
 long int size_of_file(FILE* file)
 	{	
 		assert(file != NULL);

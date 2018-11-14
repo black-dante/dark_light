@@ -1,0 +1,10 @@
+file = main_t.cpp
+func = main
+line = 18
+data = Nov 14 2018
+time = 01:59:25
+
+wrong list size
+list size = 5
+list first pointer = 5254048
+list last pointer = 5253928

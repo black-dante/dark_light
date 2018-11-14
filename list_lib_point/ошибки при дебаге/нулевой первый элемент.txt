@@ -1,0 +1,10 @@
+file = main_t.cpp
+func = main
+line = 18
+data = Nov 14 2018
+time = 01:58:28
+
+zero first or last element
+list size = 6
+list first pointer = 0
+list last pointer = 6630184

@@ -1,6 +1,8 @@
 #ifndef USEFUL_FUNC
 #define USEFUL_FUNC
 
+
+
 int comp_double_with_zero(double x);
 int comp_two_double(double x1, double x2);
 
@@ -28,5 +30,37 @@ int comp_two_double(double x1, double x2)
 		return delta_x > 0? 1: -1;
 	}
 //}--------------------------------------------------------------------------------------------------------------------------------------
+
+void fprintf_num(FILE* out, char num);
+void fprintf_num(FILE* out, int num);
+void fprintf_num(FILE* out, float num);
+void fprintf_num(FILE* out, double num);
+
+//{--------------------------------------------------------------------------------------------------------------------------------------
+/**
+  *	  functions for printing an unknown variable type
+  *
+  */
+void fprintf_num(FILE* out, char num)
+	{
+		fprintf(out, "%c",num);
+	}
+	
+void fprintf_num(FILE* out, int num)
+	{
+		fprintf(out, "%d",num);
+	}
+	
+void fprintf_num(FILE* out, float num)
+	{
+		fprintf(out, "%.2f",num);
+	}
+	
+void fprintf_num(FILE* out, double num)
+	{
+		fprintf(out, "%.2lf",num);
+	}
+//}--------------------------------------------------------------------------------------------------------------------------------------
+
 
 #endif

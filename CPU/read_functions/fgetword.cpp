@@ -22,7 +22,7 @@ int fgetword_without_prob(char *w , int lim, FILE *fp);
  */
 int type(int symbol)
 {
-	if (symbol >= 'A' && symbol <= 'Z' || symbol >= 'a' && symbol <= 'z')
+	if (symbol >= 'A' && symbol <= 'Z' || symbol >= 'a' && symbol <= 'z' || symbol == '_')
 		return (LETTER);
 	else if (symbol >= '0' && symbol <= '9')
 		return (DIGIT);
@@ -134,7 +134,7 @@ int fgetword_without_prob(char *word , int limit, FILE *file)
 	{
 		int symbol = 0;
 		
-		while((symbol = fgetword(word, limit, file)) == ' ' || symbol == '\t' || symbol == '\n' || symbol == ';')
+		while((symbol = fgetword(word, limit, file)) == ' ' || symbol == '\t' || symbol == '\n' || symbol == ';' || symbol == '\r')
 			{
 				if(symbol == ';')
 					while((symbol = fgetword(word, limit, file)) != '\n' && symbol != EOF);

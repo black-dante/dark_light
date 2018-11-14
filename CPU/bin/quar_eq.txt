@@ -23,7 +23,7 @@ jmp main
 ;{/////////////////////////////////////////
 ;//	linear_Equation
 ;//////////////////////////////////////////
-linear_Equation:
+linear_Equationn:
 cmp 0 rbx
 je NoSolutions
 push 0

@@ -1,0 +1,36 @@
+file = main_t.cpp
+func = main
+line = 18
+data = Nov 14 2018
+time = 02:10:41
+
+null_center_elem
+list size = 6
+list first pointer = 3615648
+list last pointer = 3615528
+
+
+list elements:
+
+
+list address = 3615648
+list next = 3615624
+list prev = 0
+list field = word6
+
+
+
+list address = 3615624
+list next = 3615600
+list prev = 3615648
+list field = word5
+
+
+
+list address = 3615600
+list next = 0
+list prev = 3615624
+list field = word4
+
+
+

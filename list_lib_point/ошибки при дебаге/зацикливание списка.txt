@@ -1,0 +1,57 @@
+file = main_t.cpp
+func = main
+line = 18
+data = Nov 14 2018
+time = 02:06:32
+
+middle looping list
+list size = 6
+list first pointer = 4139936
+list last pointer = 4139816
+
+
+list elements:
+
+
+list address = 4139936
+list next = 4139912
+list prev = 0
+list field = word6
+
+
+
+list address = 4139912
+list next = 4139864
+list prev = 4139936
+list field = word5
+
+
+
+list address = 4139864
+list next = 4139888
+list prev = 4139912
+list field = word3
+
+
+
+list address = 4139888
+list next = 4139864
+list prev = 4139864
+list field = word4
+
+
+
+list address = 4139864
+list next = 4139888
+list prev = 4139912
+list field = word3
+
+
+
+list address = 4139888
+list next = 4139864
+list prev = 4139864
+list field = word4
+
+
+

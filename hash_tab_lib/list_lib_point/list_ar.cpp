@@ -310,7 +310,7 @@ struct list_t* get_last_elem(list_ar_t* list_ar)
 
 	
 /**
- *
+ * 	
  *	delete_elem
  *	удаляет элемент list из массива list_ar
  */	
@@ -321,6 +321,19 @@ void delete_elem(list_ar_t* list_ar, list_t *list)
 		assert(list != NULL);
 		
 		if(list_ar->size == 0) return;
+		
+		if(list_ar->size == 1)
+			{
+				if (list_ar->first == list)
+					list_ar->size = 0;
+				
+				return;
+			}
+			
+		if(list_ar->first == list)
+			list_ar->first = list_ar->first->next;
+		else if(list_ar->last == list)
+			list_ar->last = list_ar->last->prev;
 		
 		delete_elem(list);
 		list_ar->size--;
@@ -406,7 +419,6 @@ void list_ar_full_info(list_ar_t* list_ar, FILE* data)
  */		
 void list_ar_short_info(list_ar_t* list_ar, FILE* data)
 	{
-		list_ar_header(list_ar, data);
 		root_short_info(list_ar->first, data);
 	}
 	
